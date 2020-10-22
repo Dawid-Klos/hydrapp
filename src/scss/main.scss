@@ -4,10 +4,26 @@
 @import "modules/hello.scss";
 
 body {
-  background: $wtf;
-  color: #fff;
+  background: $hydrapp;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-}
+  
+  &__title {
+
+  }
+  &__water-glass {
+
+  }
+  &__counter {
+
+  }
+  &__add-glass {
+
+  }
+  &__delete-glass {
+
+  }
+} 
