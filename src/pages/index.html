@@ -3,12 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>hydrAPP - ...</title>
-    <meta name="description" content="Your project description" />
+    <title>hydrAPP</title>
+    <meta name="description" content="Your drinking water app" />
     <!-- Title -->
-    <meta property="og:title" content="" />
+    <meta property="og:title" content="hydrAPP" />
     <!-- OPTIONAL description. 2-4 sentences. -->
-    <meta property="og:description" content="" />
+    <meta property="og:description" content="You'll never forget again to drink water with our
+    great app. Easily add another glass and don't worry your every day score is saved!" />
     <!-- full url with http(s) ie. https://maciejkorsan.github.io/my-repo/ -->
     <meta property="og:url" content="" />
     <!-- full url to the image with http(s) ie. https://maciejkorsan.github.io/my-repo/assets/img/fb.png. Facebook suggests at least 1200 x 630. -->
@@ -145,7 +146,20 @@
     />
   </head>
   <body class="main">
-   
+
+      <header class="header">
+          <nav class="nav nav--js">
+          <a class="nav__link" href="#">Stats</a>
+          <a class="nav__link" href="#">Settings</a>
+          <a class="nav__link" href="#">About</a>
+          </nav>
+          <button class="hamburger hamburger--js hamburger--slider" type="button">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button> 
+      </header>
+
       <h1 class="main__title">hydrAPP</h1>
       <img class="main__water-glass" src="../assets/img/water-glass.svg" alt="water glass" />
       <p class="main__counter counter--js">0</p>

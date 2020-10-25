@@ -2,7 +2,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import "_variables";
 @import "modules/hello.scss";
+@import "hamburgers/hamburgers.scss";
 
+.hamburger {
+  padding: 16px;
+  color: #fff;
+  background: 0;
+  border: 0;
+  position: absolute;
+  right: 12px;
+    &:active {
+      outline: none;
+      border: none;
+    }
+    &:focus {
+      outline: 0;
+    }
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
 .main {
   background: $hydrapp;
   color: #ffffff;
@@ -12,10 +34,8 @@
   justify-content: center;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
-
   &__title {
     font-size: 55px;
-    margin-top: -87px;
     margin-bottom: 67px;
     letter-spacing: .1rem;
   }
@@ -59,4 +79,19 @@
         outline: 0;
       }
   }
-} 
+}
+.nav {
+  background: #FFFFFF;
+  min-height: 50px;
+  margin: 0 auto;
+  display: none;
+  align-content: center;
+  justify-content: center;
+    &__link {
+      margin: 16px;
+      padding: 16px;      
+    }
+}
+.nav--open {
+  display: flex;
+}

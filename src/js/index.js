@@ -11,6 +11,8 @@ console.log('HELLO 🚀')
 
 /* My variables */
 
+const hamburger = document.querySelector(".hamburger--js");
+const nav = document.querySelector(".nav--js");
 const addGlass = document.querySelector(".add-glass--js");
 const deleteGlass = document.querySelector(".delete-glass--js");
 const counter = document.querySelector(".counter--js");
@@ -53,4 +55,12 @@ deleteGlass.addEventListener('click', function(event) {
     }
     localStorage.setItem(key, result);
     counter.innerHTML = result;
+});
+
+
+/* Hamburger menu */
+
+hamburger.addEventListener('click', function (event) {
+    nav.classList.toggle('nav--open');
+    hamburger.classList.toggle('is-active');
 });
