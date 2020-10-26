@@ -2,7 +2,7 @@ import '../scss/main.scss';
 import swal from 'sweetalert';
 
 // uncomment the lines below to enable PWA
-import {registerSW} from './pwa.js';
+import { registerSW } from './pwa.js';
 registerSW();
 
 /* place your code below */
@@ -16,10 +16,10 @@ const nav = document.querySelector(".nav--js");
 const addGlass = document.querySelector(".add-glass--js");
 const deleteGlass = document.querySelector(".delete-glass--js");
 const counter = document.querySelector(".counter--js");
-const key = new Date().toISOString().slice(0,10);
+const key = new Date().toISOString().slice(0, 10);
 let result = '';
 
-/* localStorage */  
+/* localStorage */
 
 counter.value = result;
 
@@ -35,7 +35,7 @@ if (!drunkWater) {
 
 /* Adding glass */
 
-addGlass.addEventListener('click', function(event) {
+addGlass.addEventListener('click', function (event) {
     result++;
     localStorage.setItem(key, result);
     if (result > 16) {
@@ -48,7 +48,7 @@ addGlass.addEventListener('click', function(event) {
 
 /* Deleting glass */
 
-deleteGlass.addEventListener('click', function(event) {
+deleteGlass.addEventListener('click', function (event) {
     result--;
     if (result <= 0) {
         result = 0;
