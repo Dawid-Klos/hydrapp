@@ -1,0 +1,15 @@
+.settings {
+    display: none;
+    position: relative;
+    background: $hydrapp;
+    min-height: 80vh;
+    width: 100%;
+    top: 0;
+    z-index: 997;
+    margin: 0 auto;
+    text-align: center;
+}
+.settings--open {
+    display: flex;
+    flex-direction: column;
+}
