@@ -7,7 +7,14 @@
     top: 0;
     z-index: 997;
     text-align: center;
- 
+        &__charts {
+            background-color: rgba($color: #ffffff, $alpha: .9);
+            position: relative;
+            margin: 24px auto;
+            height: 55vh;
+            width: 90vw;
+            border-radius: 5px;
+        }
         &__history {
             display: flex;
             flex-direction: column;

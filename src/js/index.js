@@ -1,6 +1,6 @@
 import '../scss/main.scss';
 import swal from 'sweetalert';
-
+import chart from 'chart.js';
 // uncomment the lines below to enable PWA
 import { registerSW } from './pwa.js';
 registerSW();
@@ -87,15 +87,82 @@ menuStats.addEventListener('click', function(event) {
 
 const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a[0]));
 
-for (const [key, value] of storage ) {
-    if (value !== 'INFO') {
+// for (const [key, value] of storage ) {
+//     if (value !== 'INFO') {
 
-        let div = document.getElementById('div');
-        div.insertAdjacentHTML('beforeend', `<div class="stats__history--div">${key}          Liczba wypitych szklanek: ${value}</div>`);
+//         let div = document.getElementById('div');
+//         div.insertAdjacentHTML('beforeend', `<div class="stats__history--div">${key}          Liczba wypitych szklanek: ${value}</div>`);
+//     }
+//   }
 
-        console.log(`${key}: ${value}`);
+// history chart 
+
+let chartDate = [];
+let chartGlassesValue = [];
+
+function drinkingChartValues() {
+
+    
+    for (const [key, value] of storage ) {
+
+        if (value !== 'INFO' && chartDate.length < 7) {
+            chartDate.push(key.slice(5,10));
+            chartGlassesValue.push(value);
+
+        }
+        console.log(chartDate);
+        console.log(chartGlassesValue);
+
+    }    
+
+}
+
+function updateDrinkingChart(){
+    myDrinkingChart.data.datasets[0].data = chartGlassesValue;
+    myDrinkingChart.data.labels = chartDate;
+    myDrinkingChart.update();  
+}
+
+let ctx = document.getElementById('myChart').getContext('2d');
+let myDrinkingChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        datasets: [{
+            label: 'Water drinking history',
+            data: [12, 19, 3, 5, 2, 3, 4],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
     }
-  }
+});
+
+drinkingChartValues();
+updateDrinkingChart();
 
 /* Settings */
 
