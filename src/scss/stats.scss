@@ -6,16 +6,24 @@
     width: 100%;
     top: 0;
     z-index: 997;
-    margin: 0 auto;
     text-align: center;
-        &__button {
-            position: relative;
-            right: 16px;
-            top: 30px;
-            width: 6px;
+ 
+        &__history {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+
+        }
+        &__history--div {
+            padding: 16px;
+            background-color: rgba($color: #ffffff, $alpha: .3);
+            border-radius: 5px;
+            width: 300px;
+            margin: 8px auto;
         }
 }
 .stats--open {
-    display: flex;
-    flex-direction: column;
+    display: block;
+
 }

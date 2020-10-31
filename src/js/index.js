@@ -25,6 +25,8 @@ const counter = document.querySelector(".counter--js");
 const key = new Date().toISOString().slice(0, 10);
 let result = '';
 
+
+
 /* localStorage */
 
 counter.value = result;
@@ -44,9 +46,8 @@ if (!drunkWater) {
 addGlass.addEventListener('click', function (event) {
     result++;
     localStorage.setItem(key, result);
-    if (result > 16) {
-        result = 16;
-        swal("You've alredy drunk 4L of water");
+    if (result >= 8) {;
+        swal("You've alredy drunk 2L of water. Good job! :)");
     }
     counter.innerHTML = result;
 });
@@ -56,7 +57,8 @@ addGlass.addEventListener('click', function (event) {
 
 deleteGlass.addEventListener('click', function (event) {
     result--;
-    if (result <= 0) {
+    if (result < 0) {
+        swal("You don't have anything to delete");
         result = 0;
     }
     localStorage.setItem(key, result);
@@ -73,12 +75,27 @@ hamburger.addEventListener('click', function (event) {
 
 /* Stats */
 
+// button
 menuStats.addEventListener('click', function(event) {
     stats.classList.add('stats--open');
     settings.classList.remove('settings--open');
     nav.classList.toggle('nav--open');
     hamburger.classList.toggle('is-active');
 });
+
+// history
+
+const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a[0]));
+
+for (const [key, value] of storage ) {
+    if (value !== 'INFO') {
+
+        let div = document.getElementById('div');
+        div.insertAdjacentHTML('beforeend', `<div class="stats__history--div">${key}          Liczba wypitych szklanek: ${value}</div>`);
+
+        console.log(`${key}: ${value}`);
+    }
+  }
 
 /* Settings */
 
