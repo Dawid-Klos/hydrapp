@@ -46,8 +46,7 @@ if (!drunkWater) {
 addGlass.addEventListener('click', function (event) {
     result++;
     localStorage.setItem(key, result);
-    if (result >= 8) {
-        ;
+    if (result = 8) {
         swal("You've alredy drunk 2L of water. Good job! :)");
     }
     counter.innerHTML = result;
@@ -74,9 +73,9 @@ hamburger.addEventListener('click', function (event) {
     hamburger.classList.toggle('is-active');
 });
 
-/* Stats */
+// !!! STATISTICS PAGE !!! //
 
-// button
+// button //
 menuStats.addEventListener('click', function (event) {
     stats.classList.add('stats--open');
     settings.classList.remove('settings--open');
@@ -87,22 +86,14 @@ menuStats.addEventListener('click', function (event) {
     updateConfig();
 });
 
-// history
+// sorting values in localStorage //
 
 const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a[0]));
-
-// for (const [key, value] of storage ) {
-//     if (value !== 'INFO') {
-
-//         let div = document.getElementById('div');
-//         div.insertAdjacentHTML('beforeend', `<div class="stats__history--div">${key}          Liczba wypitych szklanek: ${value}</div>`);
-//     }
-//   }
 
 // !!! HISTORY CHART !!! //
 
 
-// Updating by localStorage data //
+// Updating chart by localStorage data //
 
 let chartDate = [];
 let chartGlassesValue = [];
@@ -161,7 +152,7 @@ let config = {
 
 let myDrinkingChart = new Chart(ctx, config);
 
-// charts updating 
+// chart updating //
 
 function updateDrinkingChart() {
     myDrinkingChart.data.datasets[0].data = chartGlassesValue;
@@ -181,7 +172,7 @@ function updateConfig() {
 drinkingChartValues();
 updateDrinkingChart();
 
-/* Settings */
+//* !!! SETTINGS !!! *//
 
 menuSettings.addEventListener('click', function (event) {
     settings.classList.add('settings--open');

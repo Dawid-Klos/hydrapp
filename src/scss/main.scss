@@ -82,7 +82,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  margin-top: -30px;
+  margin-top: -10px;
     &__water-glass {
       z-index: 0;
     }
@@ -135,7 +135,7 @@ body {
     &__link {
       justify-content: center;
       align-content: center;
-      padding: 12px;
+
       width: 100%;
       text-decoration: none;
       text-transform: uppercase;
@@ -143,18 +143,19 @@ body {
       color: #000000;
     }
     &__link--home::before {
-      content: url(../assets/icons/face.png);
+      content: url(../assets/icons/home.svg);
     }
     &__link--stats::before {
-      content: url(../assets/icons/stats.png);
+      content: url(../assets/icons/stats.svg);
     }
     &__link--settings::before {
-      content: url(../assets/icons/settings.png);
+      content: url(../assets/icons/settings.svg);
     }
 }
 .nav--open {
   display: flex;
   position: relative;
   z-index: 999;
-  margin: -28px auto;
+  margin: 0px auto;
+  margin-top: -36px;
 }
