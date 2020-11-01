@@ -6,14 +6,22 @@
     width: 100%;
     z-index: 997;
     text-align: center;
-    top: 140px;
+    top: 160px;
         &__charts {
-            background-color: rgba($color: #ffffff, $alpha: .9);
+            background-color: rgba($color: #ffffff, $alpha: 1);
             position: relative;
             margin: 24px auto;
             height: 65vh;
             width: 90vw;
             border-radius: 5px;
+            box-shadow:
+  0 0.5px 1.5px rgba(0, 0, 0, 0.042),
+  0 1.1px 3.6px rgba(0, 0, 0, 0.061),
+  0 2.1px 6.8px rgba(0, 0, 0, 0.075),
+  0 3.8px 12.1px rgba(0, 0, 0, 0.089),
+  0 7.1px 22.6px rgba(0, 0, 0, 0.108),
+  0 17px 54px rgba(0, 0, 0, 0.15)
+;
         }
 }
 .stats--open {
