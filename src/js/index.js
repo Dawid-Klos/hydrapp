@@ -46,7 +46,8 @@ if (!drunkWater) {
 addGlass.addEventListener('click', function (event) {
     result++;
     localStorage.setItem(key, result);
-    if (result >= 8) {;
+    if (result >= 8) {
+        ;
         swal("You've alredy drunk 2L of water. Good job! :)");
     }
     counter.innerHTML = result;
@@ -76,11 +77,14 @@ hamburger.addEventListener('click', function (event) {
 /* Stats */
 
 // button
-menuStats.addEventListener('click', function(event) {
+menuStats.addEventListener('click', function (event) {
     stats.classList.add('stats--open');
     settings.classList.remove('settings--open');
     nav.classList.toggle('nav--open');
     hamburger.classList.toggle('is-active');
+    myDrinkingChart.destroy();
+    myDrinkingChart = new Chart(ctx, config);
+    updateConfig();
 });
 
 // history
@@ -95,62 +99,56 @@ const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a
 //     }
 //   }
 
-// history chart 
+// !!! HISTORY CHART !!! //
+
+
+// Updating by localStorage data //
 
 let chartDate = [];
 let chartGlassesValue = [];
 
 function drinkingChartValues() {
 
-    
-    for (const [key, value] of storage ) {
+    for (const [key, value] of storage) {
 
         if (value !== 'INFO' && chartDate.length < 7) {
-            chartDate.push(key.slice(5,10));
+            chartDate.push(key.slice(5, 10));
             chartGlassesValue.push(value);
-
         }
-        console.log(chartDate);
-        console.log(chartGlassesValue);
-
-    }    
-
+    }
 }
 
-function updateDrinkingChart(){
-    myDrinkingChart.data.datasets[0].data = chartGlassesValue;
-    myDrinkingChart.data.labels = chartDate;
-    myDrinkingChart.update();  
-}
+// Chart.js //
 
 let ctx = document.getElementById('myChart').getContext('2d');
-let myDrinkingChart = new Chart(ctx, {
-    type: 'bar',
+let config = {
+    type: 'line',
     data: {
         labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
         datasets: [{
-            label: 'Water drinking history',
+            label: 'Last 7 days of drinking',
             data: [12, 19, 3, 5, 2, 3, 4],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(55, 102, 173, 0.8)',
+                'rgba(55, 102, 173, 0.8)',
+                'rgba(55, 102, 173, 0.8)',
+                'rgba(55, 102, 173, 0.8)',
+                'rgba(55, 102, 173, 0.8)',
+                'rgba(55, 102, 173, 0.8)',
+                'rgba(55, 102, 173, 0.8)'
             ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+            padding: 6,
+            pointStyle: 'rectRounded',
+            radius: 4,
+            hitRadius: 1,
+            borderWidth: 1,
         }]
     },
     options: {
+        animation: {
+            duration: 1,
+            easing: 'linear'
+        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -159,14 +157,33 @@ let myDrinkingChart = new Chart(ctx, {
             }]
         }
     }
-});
+};
+
+let myDrinkingChart = new Chart(ctx, config);
+
+// charts updating 
+
+function updateDrinkingChart() {
+    myDrinkingChart.data.datasets[0].data = chartGlassesValue;
+    myDrinkingChart.data.labels = chartDate;
+    myDrinkingChart.update();
+}
+
+function updateConfig() {
+
+    myDrinkingChart.options.animation = {
+        duration: 1200,
+        easing: "easeInCubic"
+    };
+    myDrinkingChart.update();
+}
 
 drinkingChartValues();
 updateDrinkingChart();
 
 /* Settings */
 
-menuSettings.addEventListener('click', function(event) {
+menuSettings.addEventListener('click', function (event) {
     settings.classList.add('settings--open');
     stats.classList.remove('stats--open');
     nav.classList.toggle('nav--open');
@@ -175,7 +192,7 @@ menuSettings.addEventListener('click', function(event) {
 
 /* Back to main page */
 
-menuBacktoHome.addEventListener('click', function(event) {
+menuBacktoHome.addEventListener('click', function (event) {
     stats.classList.remove('stats--open');
     settings.classList.remove('settings--open');
     nav.classList.toggle('nav--open');
