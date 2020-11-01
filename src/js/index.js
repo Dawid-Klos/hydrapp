@@ -26,20 +26,22 @@ const hamburger = document.querySelector(".hamburger--js");
 const addGlass = document.querySelector(".add-glass--js");
 const deleteGlass = document.querySelector(".delete-glass--js");
 const counter = document.querySelector(".counter--js");
-const water = document.querySelector('.water-glass--js');
-
+const water = document.querySelector('.water--js');
+const test = document.querySelector('.main__water-glass');
+const waterGlass = document.querySelector('.water-glass--js');
 // localStorage values //
 const key = new Date().toISOString().slice(0, 10);
 const keyValue = localStorage.getItem(key);
 
+//             //
+
+
 // GREETINGS NEW USERS //
 
 if (!keyValue) {
-    swal("WELCOME!", "Nice to see you here!", "info");
+    swal("WELCOME!", "To begin just simply tap the Add glass button and start enyoing hydrated life!", "info");
 }
-if (!keyValue) {
-    swal("hydrAPP", "To begin just simply tap the Add glass button and start enyoing hydrated life!", "info");
-}
+
 
 // LOCALSTORAGE //
 
@@ -59,21 +61,23 @@ if (!keyValue) {
 
 addGlass.addEventListener('click', function (event) {
     result++;
-    if (result == 8) {
-        swal("", "You've alredy drunk 2L of water. Good job! ", "success");
+    progress();
+    if (result == 4) {
+        swal("", "You've alredy drunk 1l of water.\n \n Good job! ", "success");
     }
     if (result == 16) {
-        swal("", "You have to be very thursty! 4l behind you :)", "success");
+        swal("", "You have to be very thursty! \n \n 4l behind you :)");
     }
     localStorage.setItem(key, result);
     counter.innerHTML = result;
+    glassAnimation();
 });
-
 
 // DELETING A GLASS //
 
 deleteGlass.addEventListener('click', function (event) {
     result--;
+    progress();
     if (result < 0) {
         swal("Oops!", "You don't have anything to delete", "error");
         result = 0;
@@ -84,12 +88,46 @@ deleteGlass.addEventListener('click', function (event) {
 
 // GLASS ANIMATION //
 
+function glassAnimation() {
+    test.classList.add('water-glass--js');
+    test.classList.add('animate__animated');
+    test.classList.add('animate__fadeIn');
+    setTimeout(function() {
+    test.classList.remove('water-glass--js');
+    test.classList.remove('animate__animated');
+    test.classList.remove('animate__fadeIn');
+    }, 600);
+}
 
 
 
 // WATER OPACITY //
 
+let myGoal = 20;
 
+const progress = () => {
+    water.style.opacity = `${progress}%`;
+    const progress = (result / myGoal) * 100;
+  
+    if (progress <= 20) {
+      water.style.opacity = 0.2;
+    } else if (progress <= 40) {
+      water.style.opacity = 0.3;
+    } else if (progress <= 60) {
+      water.style.opacity = 0.4;
+    } else if (progress <= 70) {
+      water.style.opacity = 0.5;
+    } else if (progress <= 80) {
+      water.style.opacity = 0.6;
+    } else if (progress <= 90) {
+      water.style.opacity = 0.7;
+    } else {
+      water.style.opacity = 1;
+    }
+    if (progress >= 100) {
+      swal("Daily goal", "Congratulations! \n You've achieved your goal today :)", "success");
+    }
+  };
 
 
 // HAMBURGER MENU //
@@ -102,6 +140,7 @@ hamburger.addEventListener('click', function (event) {
 
 //  SETTINGS - subpage //
 
+// button //
 menuSettings.addEventListener('click', function (event) {
     settings.classList.add('settings--open');
     stats.classList.remove('stats--open');
@@ -111,6 +150,7 @@ menuSettings.addEventListener('click', function (event) {
 
 //   HOME  - subpage   //
 
+// button //
 menuBacktoHome.addEventListener('click', function (event) {
     stats.classList.remove('stats--open');
     settings.classList.remove('settings--open');

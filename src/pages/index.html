@@ -19,6 +19,8 @@
   <!-- uncomment the line below to enable PWA  -->
   <link rel="manifest" href="manifest.json">
 
+  <!-- ANIMATIONS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-icon-180.png">
   <link rel="apple-touch-icon" sizes="167x167" href="pwa/apple-icon-167.png">
@@ -76,7 +78,7 @@
 <body>
 
   <header class="header">
-    <h1 class="header__title">hydrAPP</h1>
+    <h1 class="header__title animate__animated animate__zoomInDown">hydrAPP</h1>
     <nav class="nav nav--js">
       <button class="nav__link nav__link--home"></button>
       <button class="nav__link nav__link--stats"></button>
@@ -88,14 +90,19 @@
       </span>
     </button>
   </header>
- 
+
   <main class="main">
 
-    <svg class="main__water-glass" width="280" height="280" viewBox="0 0 280 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M242.748 2.8875C241.085 1.05 238.74 0 236.255 0H43.7555C41.288 0 38.9255 1.05 37.263 2.8875C35.618 4.7075 34.7955 7.1575 35.0405 9.625L61.2905 272.125C61.7455 276.605 65.508 280 70.0055 280H210.005C214.503 280 218.265 276.605 218.703 272.125L244.953 9.625C245.215 7.1575 244.41 4.7075 242.748 2.8875Z" fill="#ECEFF1"/>
-      <path d="M219.455 89.25L202.13 262.5H77.8805L58.4555 68.775C80.3305 61.775 113.58 57.05 140.005 78.75C165.555 99.75 197.755 95.9 219.455 89.25Z" fill="#2196F3" class="water-glass--js" />
-      </svg>
-      
+    <svg class="main__water-glass" width="280" height="280" viewBox="0 0 280 280" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M242.748 2.8875C241.085 1.05 238.74 0 236.255 0H43.7555C41.288 0 38.9255 1.05 37.263 2.8875C35.618 4.7075 34.7955 7.1575 35.0405 9.625L61.2905 272.125C61.7455 276.605 65.508 280 70.0055 280H210.005C214.503 280 218.265 276.605 218.703 272.125L244.953 9.625C245.215 7.1575 244.41 4.7075 242.748 2.8875Z"
+        fill="#ECEFF1" />
+      <path
+        d="M219.455 89.25L202.13 262.5H77.8805L58.4555 68.775C80.3305 61.775 113.58 57.05 140.005 78.75C165.555 99.75 197.755 95.9 219.455 89.25Z"
+        fill="#2196F3" class="water--js" />
+    </svg>
+
 
     <p class="main__counter counter--js">0</p>
     <button class="main__add-glass add-glass--js" type="button">Add glass</button>
@@ -105,7 +112,8 @@
   <div class="stats  stats--js">
     <h2>Statistics</h2>
     <div class="stats__charts">
-      <canvas id="myChart"width="400" height="550" aria-label="Statistics for drinking water" role="img">Something has broken. :(</canvas>
+      <canvas id="myChart" width="400" height="550" aria-label="Statistics for drinking water" role="img">Something has
+        broken. :(</canvas>
     </div>
   </div>
   <div class="settings settings--js">
