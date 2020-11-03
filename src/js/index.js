@@ -230,7 +230,7 @@ function drinkingChartValues() {
     for (const [key, value] of storage) {
 
         if (value !== 'INFO' && chartDate.length < 7) {
-            chartDate.push(key.slice(5, 10));
+            chartDate.push(key.slice(5,10));
             chartGlassesValue.push(value);
         }
     }
