@@ -6,7 +6,11 @@
     width: 100%;
     z-index: 997;
     text-align: center;
-    top: 140px;
+    top: 160px;
+    align-items: center;
+        &__select-goal {
+            width: 60%;
+        }
 }
 .settings--open {
     display: flex;

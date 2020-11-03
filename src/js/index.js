@@ -27,8 +27,8 @@ const addGlass = document.querySelector(".add-glass--js");
 const deleteGlass = document.querySelector(".delete-glass--js");
 const counter = document.querySelector(".counter--js");
 const water = document.querySelector('.water--js');
-const test = document.querySelector('.main__water-glass');
-const waterGlass = document.querySelector('.water-glass--js');
+const waterGlass = document.querySelector('.main__water-glass');
+
 // localStorage values //
 const key = new Date().toISOString().slice(0, 10);
 const keyValue = localStorage.getItem(key);
@@ -38,8 +38,9 @@ const keyValue = localStorage.getItem(key);
 
 // GREETINGS NEW USERS //
 
+
 if (!keyValue) {
-    swal("WELCOME!", "To begin just simply tap the Add glass button and start enyoing hydrated life!", "info");
+    swal("WELCOME!", "Nice to see you back. :)", "info");
 }
 
 
@@ -89,17 +90,15 @@ deleteGlass.addEventListener('click', function (event) {
 // GLASS ANIMATION //
 
 function glassAnimation() {
-    test.classList.add('water-glass--js');
-    test.classList.add('animate__animated');
-    test.classList.add('animate__fadeIn');
+    waterGlass.classList.add('water-glass--js');
+    waterGlass.classList.add('animate__animated');
+    waterGlass.classList.add('animate__shakeY');
     setTimeout(function() {
-    test.classList.remove('water-glass--js');
-    test.classList.remove('animate__animated');
-    test.classList.remove('animate__fadeIn');
-    }, 600);
+    waterGlass.classList.remove('water-glass--js');
+    waterGlass.classList.remove('animate__animated');
+    waterGlass.classList.remove('animate__shakeY');
+    }, 400);
 }
-
-
 
 // WATER OPACITY //
 
@@ -124,7 +123,7 @@ const progress = () => {
     } else {
       water.style.opacity = 1;
     }
-    if (progress >= 100) {
+    if (progress == 100) {
       swal("Daily goal", "Congratulations! \n You've achieved your goal today :)", "success");
     }
   };
