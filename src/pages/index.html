@@ -92,7 +92,11 @@
   </header>
 
   <main class="main">
-
+    <div class="main__status">
+      <span class="goal"></span>
+      <span class="capacity"></span>
+      <span class="status"></span>
+    </div>
     <svg class="main__water-glass" width="280" height="280" viewBox="0 0 280 280" fill="none"
       xmlns="http://www.w3.org/2000/svg">
       <path
@@ -122,13 +126,13 @@
 
       <label for="goal" class="settings__select-goal">Choose your goal:</label>
       <select class="settings__select-goal goal--js" name="goal">
-        <option value="1">1 litre</option>
-        <option value="1.5">1.5 litre</option>
-        <option value="2">2 litres</option>
-        <option value="2.5">2.5 litres</option>
-        <option value="3">3 litres</option>
-        <option value="3.5">3.5 litres</option>
-        <option value="4">4 litres</option>
+        <option value="1000">1 litre</option>
+        <option value="1500">1.5 litre</option>
+        <option value="2000">2 litres</option>
+        <option value="2500">2.5 litres</option>
+        <option value="3000">3 litres</option>
+        <option value="3500">3.5 litres</option>
+        <option value="4000">4 litres</option>
       </select>
       <label for="capacity" class="settings__select-capacity">Choose your capacity of cup:</label>
       <select class="settings__select-capacity capacity--js" name="capacity">

@@ -39,6 +39,14 @@ const opacity = localStorage.getItem("opacity");
 const goalChoice = document.querySelector('.goal--js');
 const capacityChoice = document.querySelector('.capacity--js');
 const saveChoices = document.querySelector('.select--js');
+
+
+// Goal, capacity, percentage - current status //
+const goalStatus = document.querySelector('.goal');
+const capacityStatus = document.querySelector('.capacity');
+const percentageStatus = document.querySelector('.status');
+let select1 = 'myGoal';
+let select2 = 'myCapacity';
 const goalValue = localStorage.getItem(select1);
 const capacityValue = localStorage.getItem(select2);
 
@@ -53,9 +61,7 @@ if (!firstTime) {
     localStorage.setItem("firstTime", "1");
 };
 
-
 // WELCOME TO USERS EVERY DAY //
-
 
 if (!keyValue) {
     swal("WELCOME!", "Nice to see you back. :)", "info");
@@ -66,15 +72,16 @@ if (!keyValue) {
 addGlass.addEventListener('click', function (event) {
     result++;
     progress();
-    if (result == 4) {
+    if ((result * myCapacity) == 1000) {
         swal("", "You've alredy drunk 1l of water.\n \n Good job! ", "success");
     }
-    if (result == 16) {
+    if ((result * myCapacity) == 4000) {
         swal("", "You have to be very thursty! \n \n 4l behind you :)", "success");
     }
     localStorage.setItem(key, result);
     counter.innerHTML = result;
     glassAnimation();
+    drinkingStatus();
 });
 
 // DELETING A GLASS //
@@ -88,6 +95,97 @@ deleteGlass.addEventListener('click', function (event) {
     }
     localStorage.setItem(key, result);
     counter.innerHTML = result;
+    drinkingStatus();
+});
+
+
+  // LOCALSTORAGE - loading //
+
+let result = '';
+counter.value = result;
+
+if (!keyValue) {
+    result = 0;
+    localStorage.setItem(key, result);
+} else {
+    result = keyValue;
+    counter.innerHTML = result;
+
+}
+
+// SORTING VALUES IN LOCALSTORAGE //
+
+const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a[0]));
+
+// MY GOAL AND MY CAPACITY //
+
+let myGoal;
+let myCapacity;
+
+if(!goalValue || !capacityValue) {
+    localStorage.setItem(select1, '8');
+    localStorage.setItem(select2, '250');
+} else {
+    myGoal = goalValue;
+    myCapacity = capacityValue;
+}
+
+const drinkingStatus = () => {
+    const percentage = ((result * myCapacity) / myGoal) * 100;
+    percentageStatus.innerHTML = (Math.round(percentage) + " %");
+    goalStatus.innerHTML = ((myGoal / myCapacity) + " cups");
+    capacityStatus.innerHTML = (myCapacity + " ml");
+}
+drinkingStatus();
+
+// Save choice //
+
+saveChoices.addEventListener('click', function (event) {
+    myGoal = goalChoice.value;
+    myCapacity = capacityChoice.value;
+    localStorage.setItem(select1, myGoal);
+    localStorage.setItem(select2, myCapacity);
+    drinkingStatus();
+});
+
+// HAMBURGER MENU //
+
+hamburger.addEventListener('click', function (event) {
+    nav.classList.toggle('nav--open');
+    hamburger.classList.toggle('is-active');
+});
+
+//   HOME  - subpage   //
+
+// button //
+menuBacktoHome.addEventListener('click', function (event) {
+    stats.classList.remove('stats--open');
+    settings.classList.remove('settings--open');
+    nav.classList.toggle('nav--open');
+    hamburger.classList.toggle('is-active');
+});
+
+// STATISTIC - subpage//
+
+// button //
+menuStats.addEventListener('click', function (event) {
+    stats.classList.add('stats--open');
+    settings.classList.remove('settings--open');
+    nav.classList.toggle('nav--open');
+    hamburger.classList.toggle('is-active');
+    myDrinkingChart.destroy();
+    myDrinkingChart = new Chart(ctx, config);
+    updateConfig();
+});
+
+//  SETTINGS - subpage //
+
+// button //
+menuSettings.addEventListener('click', function (event) {
+    settings.classList.add('settings--open');
+    stats.classList.remove('stats--open');
+    nav.classList.toggle('nav--open');
+    hamburger.classList.toggle('is-active');
 });
 
 // GLASS ANIMATION //
@@ -117,7 +215,7 @@ if (!opacity || !keyValue) {
 
 const progress = () => {
     water.style.opacity = `${progress}%`;
-    const progress = (result / myGoal) * 100;
+    const progress = ((result * myCapacity) / myGoal) * 100;
   
     if (progress <= 20) {
       water.style.opacity = 0.2;
@@ -147,103 +245,9 @@ const progress = () => {
     localStorage.setItem("opacity", opacityValue);
   };
 
-
-
-
-  // LOCALSTORAGE - loading //
-
-let result = '';
-counter.value = result;
-
-if (!keyValue) {
-    result = 0;
-    localStorage.setItem(key, result);
-} else {
-    result = keyValue;
-    counter.innerHTML = result;
-
-}
-
-
-
-
-// HAMBURGER MENU //
-
-hamburger.addEventListener('click', function (event) {
-    nav.classList.toggle('nav--open');
-    hamburger.classList.toggle('is-active');
-});
-
-
-//  SETTINGS - subpage //
-
-// button //
-menuSettings.addEventListener('click', function (event) {
-    settings.classList.add('settings--open');
-    stats.classList.remove('stats--open');
-    nav.classList.toggle('nav--open');
-    hamburger.classList.toggle('is-active');
-});
-
-
-// myGoal and myCapacity //
-
-
-let select1 = 'myGoal';
-let select2 = 'myCapacity';
-let myGoal = 8;
-let myCapacity = 250;
-
-if(!goalValue || !capacityValue) {
-    localStorage.setItem(select1, myGoal);
-    localStorage.setItem(select2, myCapacity);
-} else {
-    myGoal = goalValue;
-    myCapacity = capacityValue;
-}
-
-// Save choice //
-
-saveChoices.addEventListener('click', function (event) {
-    myGoal = goalChoice.value;
-    myCapacity = capacityChoice.value;
-    localStorage.setItem(select1, myGoal);
-    localStorage.setItem(select2, myCapacity);
-
-});
-
-
-
-//   HOME  - subpage   //
-
-// button //
-menuBacktoHome.addEventListener('click', function (event) {
-    stats.classList.remove('stats--open');
-    settings.classList.remove('settings--open');
-    nav.classList.toggle('nav--open');
-    hamburger.classList.toggle('is-active');
-});
-
-// STATISTIC - subpage//
-
-// button //
-menuStats.addEventListener('click', function (event) {
-    stats.classList.add('stats--open');
-    settings.classList.remove('settings--open');
-    nav.classList.toggle('nav--open');
-    hamburger.classList.toggle('is-active');
-    myDrinkingChart.destroy();
-    myDrinkingChart = new Chart(ctx, config);
-    updateConfig();
-});
-
-// sorting values in localStorage //
-
-const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a[0]));
-
 // MY DRINKING CHART HISTORY //
 
-// Chart.js //
+// CHART.JS //
 
 let ctx = document.getElementById('myChart').getContext('2d');
 let config = {
@@ -287,7 +291,7 @@ let config = {
 let myDrinkingChart = new Chart(ctx, config);
 
 
-// Updating chart by localStorage data //
+// UPDATING CHART BY LOCALSTORAGE VALUES //
 
 let chartDate = [];
 let chartGlassesValue = [];
@@ -296,14 +300,14 @@ function drinkingChartValues() {
 
     for (const [key, value] of storage) {
 
-        if (value !== 'INFO' && chartDate.length < 7) {
+        if (value !== 'INFO' && key !== 'myCapacity' && key !== 'myGoal' && key !== 'opacity' && key !== 'firstTime' && chartDate.length < 7) {
             chartDate.push(key.slice(5,10));
             chartGlassesValue.push(value);
         }
     }
 }
 
-// chart updating //
+// CHART UPDATING //
 
 function updateDrinkingChart() {
     myDrinkingChart.data.datasets[0].data = chartGlassesValue;

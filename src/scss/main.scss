@@ -106,7 +106,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 80px;
+  margin-top: 40px;
+    &__status {
+      width: 100%;
+      height: 50px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
     &__water-glass {
       z-index: 0;
     }
@@ -181,4 +189,31 @@ body {
 }
 .swal-modal .swal-text {
   text-align: center;
+}
+.goal {
+  margin: 8px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 4px;
+    &:before {
+      content: "";
+    }
+}
+.capacity {
+  margin: 8px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 4px;
+    &:before {
+      content: "";
+    }
+}
+.status {
+  margin: 8px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 4px;
+    &:before {
+      content: "";
+    }
 }
