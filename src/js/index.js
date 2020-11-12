@@ -45,6 +45,7 @@ const saveChoices = document.querySelector('.select--js');
 const goalStatus = document.querySelector('.goal');
 const capacityStatus = document.querySelector('.capacity');
 const percentageStatus = document.querySelector('.status');
+const progressStatus = document.querySelector('.progress--js');
 let select1 = 'myGoal';
 let select2 = 'myCapacity';
 const goalValue = localStorage.getItem(select1);
@@ -117,7 +118,7 @@ if (!keyValue) {
 
 const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a[0]));
 
-// MY GOAL AND MY CAPACITY //
+// MY GOAL AND MY CAPACITY AND MY STATUS BAR //
 
 let myGoal;
 let myCapacity;
@@ -135,6 +136,7 @@ const drinkingStatus = () => {
     percentageStatus.innerHTML = (Math.round(percentage) + " %");
     goalStatus.innerHTML = ((myGoal / myCapacity) + " cups");
     capacityStatus.innerHTML = (myCapacity + " ml");
+    progressStatus.maxvalue = 120;
 }
 drinkingStatus();
 
