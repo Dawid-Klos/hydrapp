@@ -136,7 +136,7 @@ const drinkingStatus = () => {
     percentageStatus.innerHTML = (Math.round(percentage) + " %");
     goalStatus.innerHTML = ((myGoal / myCapacity) + " cups");
     capacityStatus.innerHTML = (myCapacity + " ml");
-    progressStatus.maxvalue = 120;
+    progressStatus.value = ((result * myCapacity) / myGoal) * 100;;
 }
 drinkingStatus();
 

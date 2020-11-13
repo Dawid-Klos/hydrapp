@@ -2,11 +2,11 @@
     display: none;
     position: absolute;
     background: $hydrapp;
-    min-height: 75vh;
-    width: 90%;
+    min-height: 80vh;
+    width: 100%;
     z-index: 997;
     text-align: center;
-    top: 160px;
+    top: 80px;
     align-items: center;
         &__title {
             font-size: 32px;
@@ -46,7 +46,7 @@
     flex-direction: column;
 }
 .info {
-    margin-top: 12px;
+    margin-top: 52px;
     width: 90%;
         &__img {
         margin-bottom: 10px;
@@ -54,6 +54,6 @@
         &__text {
             margin-top: -8px;
             font-size: 18px;
-            line-height: 20px;
+            line-height: 28px;
         }
 }

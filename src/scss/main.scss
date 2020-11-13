@@ -42,12 +42,12 @@ body {
 .footer {
   position: fixed;
   width: 80%;
-  bottom: 12px;
+  bottom: 4px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   z-index: 999;
-  padding: 12px;
+  padding: 8px;
   border-top: 1px solid #fff;
     &__github {
       padding: 6px;
@@ -112,10 +112,15 @@ body {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: space-around;
+      text-align: center;
+      background-color: rgba(0, 0, 0, .2);
+      padding: 8px;
+      border-radius: 5px;
     }
     &__water-glass {
       z-index: 0;
+      margin-top: 12px;
     }
     &__counter {
       z-index: 1;
@@ -131,6 +136,7 @@ body {
       border-radius: 5px;
       background: #FFFFFF;
       outline-style: none;
+      margin-top: -38px;
         &:active {
           outline: none;
           border: none;
@@ -140,7 +146,7 @@ body {
         }
     }
     &__delete-glass {
-      margin-top: 37px;
+      margin-top: 26px;
       font-size: 16px;
       border: 0;
       padding: 0;
@@ -157,11 +163,11 @@ body {
 }
 
 .nav {
-  width: 95%;
+  width: 82%;
   display: none;
   border: 2px solid #fff;
   border-radius: 5px;
-  min-height: 60px;
+  height: 100%;
     &__link {
       justify-content: center;
       align-content: center;
@@ -182,34 +188,81 @@ body {
   display: flex;
   position: relative;
   z-index: 999;
-  margin: 0px auto;
-  margin-bottom: 12px;
+  margin-top: -74px;
+  margin-left: 4px;
+  margin-bottom: 4px;
+  animation-duration: .3s;
 }
 .swal-modal .swal-text {
   text-align: center;
 }
 .goal {
+  width: 22%;
   margin: 8px;
   padding: 10px;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 4px;
+}
+.img__goal {
+  width: 10%;
+  padding: 6px;
+  margin: -4px 18px;
 }
 .capacity {
+  width: 22%;
   margin: 8px;
   padding: 10px;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 4px;
 }
+.img__bottle {
+  width: 10%;
+  padding: 6px;
+  margin: -4px 18px;
+}
 .status {
+  width: 22%;
   margin: 8px;
   padding: 10px;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 4px;
+}
+.img__percentage {
+  width: 10%;
+  padding: 6px;
+  margin: -4px 18px;
 }
 .progress {
   align-self: center;
-  width: 300px;
-  height: 40px;
-  margin: 0 auto;
-  margin-top: 14px;
+  width: 80%;
+  margin: 8px auto;
 }
+progress[value] {
+  -webkit-appearance: none;
+   appearance: none;
+  width: 350px;
+  height: 20px;
+    &::-webkit-progress-bar {
+      background-color: #eee;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+    &::-webkit-progress-value {
+      background-image:
+         -webkit-linear-gradient(-45deg, 
+                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
+                                 rgba(0,0, 0, .1) 66%, transparent 66%),
+         -webkit-linear-gradient(top, 
+                                 rgba(255, 255, 255, .25), 
+                                 rgba(0, 0, 0, .25)),
+         -webkit-linear-gradient(left, #09c, #f44);
+    
+        border-radius: 2px; 
+        background-size: 35px 20px, 100% 100%, 100% 100%;
+      &::-webkit-progress-value::before {
+          content: '80%';
+          position: absolute;
+          right: 0;
+          top: -125%;
+      }
+}}
