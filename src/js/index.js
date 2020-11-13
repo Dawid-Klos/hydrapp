@@ -64,7 +64,7 @@ if (!firstTime) {
 
 // WELCOME TO USERS EVERY DAY //
 
-if (!keyValue) {
+if (firstTime && !keyValue) {
     swal("WELCOME!", "Nice to see you back. :)", "info");
 }
 
@@ -102,7 +102,7 @@ deleteGlass.addEventListener('click', function (event) {
 
   // LOCALSTORAGE - loading //
 
-let result = '';
+let result = 0;
 counter.value = result;
 
 if (!keyValue) {
@@ -120,12 +120,12 @@ const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a
 
 // MY GOAL AND MY CAPACITY AND MY STATUS BAR //
 
-let myGoal;
-let myCapacity;
+let myGoal = 4000;
+let myCapacity = 250;
 
 if(!goalValue || !capacityValue) {
-    localStorage.setItem(select1, '8');
-    localStorage.setItem(select2, '250');
+    localStorage.setItem(select1, myGoal);
+    localStorage.setItem(select2, myCapacity);
 } else {
     myGoal = goalValue;
     myCapacity = capacityValue;
@@ -136,7 +136,7 @@ const drinkingStatus = () => {
     percentageStatus.innerHTML = (Math.round(percentage) + " %");
     goalStatus.innerHTML = ((myGoal / myCapacity) + " cups");
     capacityStatus.innerHTML = (myCapacity + " ml");
-    progressStatus.value = ((result * myCapacity) / myGoal) * 100;;
+    progressStatus.value = ((result * myCapacity) / myGoal) * 100;
 }
 drinkingStatus();
 

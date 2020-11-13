@@ -37,6 +37,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  touch-action: manipulation;
 }
 
 .footer {
@@ -106,6 +107,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+  touch-action: manipulation;
     &__status {
       width: 85%;
       margin-bottom: 24px;
@@ -163,7 +165,7 @@ body {
 }
 
 .nav {
-  width: 82%;
+  width: 78%;
   display: none;
   border: 2px solid #fff;
   border-radius: 5px;
@@ -173,6 +175,7 @@ body {
       align-content: center;
       padding: 4px;
       width: 100%;
+      min-height: 65px;
     }
     &__link--home::before {
       content: url(../assets/icons/home.svg);
