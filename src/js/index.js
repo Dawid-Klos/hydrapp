@@ -329,27 +329,69 @@ function updateConfig() {
 drinkingChartValues();
 updateDrinkingChart();
 
+// ASK TO INSTALL THE APP //
+
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
+  showInstallPromotion();
+});
+
+const buttonInstall = document.querySelector('.button-install--js')
+
+buttonInstall.addEventListener('click', (e) => {
+    // Hide the app provided install promotion
+    hideMyInstallPromotion();
+    // Show the install prompt
+    deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the install prompt');
+      } else {
+        console.log('User dismissed the install prompt');
+      }
+    });
+  });
 
 // PUSH NOTIFICATIONS - test //
+// Zacząłem budować skrypt, który wysyła powiadomienie o konkretnych godzinacg
+// Sprawdzić czy działa
+Notification.requestPermission(function(status) {
+    console.log('Notification permission status:', status);
+});
 
-// Notification.requestPermission(function(status) {
-//     console.log('Notification permission status:', status);
-// });
+function displayNotification() {
+    if (Notification.permission == 'granted') {
+      navigator.serviceWorker.getRegistration().then(function(reg) {
+        var options = {
+          body: 'Here is a notification body!',
+          icon: 'images/example.png',
+          vibrate: [100, 50, 100],
+          data: {
+            dateOfArrival: Date.now(),
+            primaryKey: 1
+          }
+        };
+        reg.showNotification('Hello world!', options);
+      });
+    }
+  }
 
-// function displayNotification() {
-//     if (Notification.permission == 'granted') {
-//       navigator.serviceWorker.getRegistration().then(function(reg) {
-//         var options = {
-//           body: 'Here is a notification body!',
-//           icon: 'images/example.png',
-//           vibrate: [100, 50, 100],
-//           data: {
-//             dateOfArrival: Date.now(),
-//             primaryKey: 1
-//           }
-//         };
-//         reg.showNotification('Hello world!', options);
-//       });
-//     }
-//   }
-//   displayNotification();
+function checkDate() {
+    let date = new Date();
+    let hour = date.getHours();
+    if (hour === 8 || hour === 10 || hour === 14 || hour === 16) {
+        displayNotification();
+    }
+}
+let dateLoop = setInterval(function() {
+    checkDate();
+},5000);
+
+  

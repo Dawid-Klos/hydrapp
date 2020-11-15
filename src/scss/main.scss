@@ -31,6 +31,7 @@
 body {
   background: $hydrapp;
   color: #ffffff;
+  min-height: -webkit-fill-available;
   min-height: 100vh;
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -82,6 +83,7 @@ body {
   justify-content: center;
   align-content: center;
   z-index: 999;
+  background-color: $hydrapp;
   border-bottom: 1px solid #fff;
     &__title {
       font-size: 48px;
@@ -96,14 +98,15 @@ body {
       content: url(../assets/img/water-mini.svg);
       padding: 10px;
       display: inline-block;
-      animation: waterdrop 2.5s ease-in infinite;
+      animation: waterdrop 3s ease-in infinite;
     }
 }
 .main {
   background: $hydrapp;
   color: #ffffff;
   display: flex;
-  height: 100%;
+  min-height: -webkit-fill-available;
+  min-height: 80vh;
   flex-direction: column;
   align-items: center;
   justify-content: center;
