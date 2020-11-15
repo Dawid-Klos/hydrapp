@@ -6,6 +6,7 @@
 @import "stats.scss";
 @import "settings.scss";
 @import "back.scss";
+@import "status.scss";
 
 @keyframes waterdrop {
   0% {
@@ -30,8 +31,8 @@
 body {
   background: $hydrapp;
   color: #ffffff;
-  min-height: -webkit-fill-available;
   min-height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   font-family: 'Roboto', sans-serif;
   display: flex;
   flex-direction: column;
@@ -40,25 +41,8 @@ body {
   touch-action: manipulation;
 }
 
-.footer {
-  position: fixed;
-  width: 80%;
-  bottom: 4px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  z-index: 999;
-  padding: 8px;
-  border-top: 1px solid #fff;
-    &__github {
-      padding: 6px;
-    }
-    &__text {
-      text-align: center;
-    }
-}
 html {
-  height: -webkit-fill-available;
+  height: calc(var(--vh, 1vh) * 100);
 }
 .hamburger {
   border: 0;
@@ -106,31 +90,22 @@ html {
   background: $hydrapp;
   color: #ffffff;
   display: flex;
-  min-height: -webkit-fill-available;
-  min-height: 80vh;
+  height: 90vh;
+  height: calc(var(--vh, 1vh) * 90);
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 48px;
+  margin-top: 12px;
   touch-action: manipulation;
-    &__status {
-      width: 95%;
-      margin-bottom: 64px;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      text-align: center;
-      background-color: rgba(0, 0, 0, .2);
-      padding: 8px;
-      border-radius: 5px;
-    }
     &__water-glass {
       z-index: 0;
+      position: relative;
+      width: 260px;
+      height: 260px;
     }
     &__counter {
       z-index: 1;
-      font-size: 112px;
+      font-size: 102px;
       color: #000000;
       margin-top: -168px;
     }
@@ -196,176 +171,5 @@ html {
 .swal-modal .swal-text {
   text-align: center;
 }
-.goal {
-  width: 22%;
-  margin: 8px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, .25);
-  border-radius: 4px;
-    &:before {
-      content: "Goal\A";
-      white-space: pre;
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 28px;
-        }
-}
-.img__goal {
-  width: 10%;
-  padding: 6px;
-  margin: -4px 18px;
-}
-.capacity {
-  width: 22%;
-  margin: 8px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, .25);
-  border-radius: 4px;
-    &:before {
-      content: "Capacity\A";
-      letter-spacing: .8px;
-      white-space: pre;
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 28px;
-        }
-}
-.img__bottle {
-  width: 10%;
-  padding: 6px;
-  margin: -4px 18px;
-}
-.status {
-  width: 22%;
-  margin: 8px;
-  padding: 10px;
-  background-color: rgba(255, 255, 255, .25);
-  border-radius: 4px;
-    &:before {
-      content: "Status\A";
-      white-space: pre;
-      font-size: 20px;
-      font-weight: bold;
-      line-height: 28px;
-        }
-}
-.img__percentage {
-  width: 10%;
-  padding: 6px;
-  margin: -4px 18px;
-}
-.progress {
-  align-self: center;
-  width: 95%;
-  margin: 8px auto;
-}
-progress[value] {
-  -webkit-appearance: none;
-   appearance: none;
-  height: 22px;
-    &::-webkit-progress-bar {
-      background-color: #eee;
-      border-radius: 2px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
-    }
-    &::-webkit-progress-value {
-      background-image:
-         -webkit-linear-gradient(-45deg, 
-                                 transparent 33%, rgba(0, 0, 0, .1) 33%, 
-                                 rgba(0,0, 0, .1) 66%, transparent 66%),
-         -webkit-linear-gradient(top, 
-                                 rgba(255, 255, 255, .25), 
-                                 rgba(0, 0, 0, .25)),
-         -webkit-linear-gradient(left, #09c, #f44);
-    
-        border-radius: 2px; 
-        background-size: 35px 22px, 100% 100%, 100% 100%;
-      &::-webkit-progress-value::before {
-          content: '80%';
-          position: absolute;
-          right: 0;
-          top: -125%;
-      }
-}}
 
-@media (min-width: 390px) {
-
-  .img__goal {
-    width: 14%;
-    padding: 6px;
-    margin: -4px 18px;
-  }
-  .img__bottle {
-    width: 14%;
-    padding: 6px;
-    margin: -4px 18px;
-  }
-  .img__percentage {
-    width: 14%;
-    padding: 6px;
-    margin: -4px 18px;
-  }
-.progress {
-  align-self: center;
-  width: 90%;
-  margin: 8px auto;
-}
-}
-
-@media (max-height: 810px) {
-  .main {
-    margin-top: 70px;
-  }
-}
-
-@media (max-height: 785px) {
-  .main {
-    margin-top: 80px;
-      &__status {
-        margin-bottom: 16px;
-
-      }
-  }
-  .goal {
-    width: 18%;
-    margin: 12px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, .25);
-    border-radius: 4px;
-  }
-  .img__goal {
-    width: 10%;
-    padding: 6px;
-    margin: -4px 32px;
-  }
-  .capacity {
-    width: 18%;
-    margin: 12px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, .25);
-    border-radius: 4px;
-  }
-  .img__bottle {
-    width: 10%;
-    padding: 6px;
-    margin: -4px 32px;
-  }
-  .status {
-    width: 18%;
-    margin: 12px;
-    padding: 10px;
-    background-color: rgba(255, 255, 255, .25);
-    border-radius: 4px;
-  }
-  .img__percentage {
-    width: 10%;
-    padding: 6px;
-    margin: -4px 32px;
-  }
-  .progress {
-    align-self: center;
-    width: 95%;
-    margin: 8px auto;
-  }
-}
-
+@import "media.scss";

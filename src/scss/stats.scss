@@ -2,12 +2,12 @@
     display: none;
     position: absolute;
     background: $hydrapp;
-    min-height: -webkit-fill-available;
-    min-height: 90%;
+    height: 90vh;
+    height: calc(var(--vh, 1vh) * 90);
     width: 100%;
     z-index: 997;
     text-align: center;
-    top: 80px;
+    top: 75px;
     touch-action: manipulation;
         &__title {
             font-size: 32px;

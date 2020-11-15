@@ -1,0 +1,118 @@
+.main__status {
+    width: 95%;
+    background-color: rgba(0, 0, 0, .2);
+    padding: 4px;
+    border-radius: 5px;
+    margin-bottom: 44px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.goal {
+    width: 22%;
+    margin: 4px;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, .25);
+    border-radius: 4px;
+
+    &:before {
+        content: "Goal\A";
+        white-space: pre;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+    }
+}
+
+.capacity {
+    width: 22%;
+    margin: 4px;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, .25);
+    border-radius: 4px;
+
+    &:before {
+        content: "Capacity\A";
+        letter-spacing: .8px;
+        white-space: pre;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+    }
+}
+
+.status {
+    width: 22%;
+    margin: 4px;
+    padding: 4px;
+    background-color: rgba(255, 255, 255, .25);
+    border-radius: 4px;
+
+    &:before {
+        content: "Status\A";
+        white-space: pre;
+        font-size: 16px;
+        font-weight: bold;
+        line-height: 20px;
+    }
+}
+
+.img__goal {
+    width: 12%;
+    padding: 6px;
+    margin: 1px 18px;
+}
+
+.img__bottle {
+    width: 12%;
+    padding: 6px;
+    margin: 1px 18px;
+}
+
+.img__percentage {
+    width: 12%;
+    padding: 6px;
+    margin: 1px 18px;
+}
+
+.progress {
+    align-self: center;
+    width: 95%;
+    margin: 8px auto;
+}
+
+progress[value] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 22px;
+
+    &::-webkit-progress-bar {
+        background-color: #eee;
+        border-radius: 2px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+
+    &::-webkit-progress-value {
+        background-image:
+            -webkit-linear-gradient(-45deg,
+                transparent 33%, rgba(0, 0, 0, .1) 33%,
+                rgba(0, 0, 0, .1) 66%, transparent 66%),
+            -webkit-linear-gradient(top,
+                rgba(255, 255, 255, .25),
+                rgba(0, 0, 0, .25)),
+            -webkit-linear-gradient(left, #09c, #f44);
+
+        border-radius: 2px;
+        background-size: 35px 22px, 100% 100%, 100% 100%;
+
+        &::-webkit-progress-value::before {
+            content: '80%';
+            position: absolute;
+            right: 0;
+            top: -125%;
+        }
+    }
+}
