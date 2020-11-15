@@ -1,7 +1,7 @@
 
-@media (min-height: 820px) {
+@media (min-height: 800px) {
     .main {
-    margin-top: 48px;
+    margin-top: 40px;
         &__status {
             margin-bottom: 48px;
         }
@@ -17,9 +17,9 @@
     .goal {
         width: 24%;
         margin: 4px;
-        padding: 12px;
+        padding: 10px;
         &:before {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             line-height: 28px;
         }
@@ -28,9 +28,9 @@
     .capacity {
         width: 24%;
         margin: 4px;
-        padding: 12px;
+        padding: 10px;
         &:before {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             line-height: 28px;
         }
@@ -39,9 +39,9 @@
     .status {
         width: 22%;
         margin: 4px;
-        padding: 12px;
+        padding: 10px;
         &:before {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
             line-height: 28px;
         }
@@ -77,53 +77,61 @@
         height: 22px;
     }
 }
+@media (max-height: 780px) {
+    .main {
+        margin-top: 52px;
+    }
+}
+
 @media (max-height: 750px) {
     .main {
-    margin-top: 24px;
+    margin-top: 22px;
+        &__status {
+            margin-bottom: 28px;
+        }
         &__water-glass {
-            width: 240px;
-            height: 240px;
-
+            width: 265px;
+            height: 265px;
         }
         &__counter {
-            font-size: 92px;
-            margin-top: -140px;
+            font-size: 96px;
+            margin-top: -156px;
         }
         &__add-glass {
-            margin-top: 12px;
+            margin-top: -28px;
         }
 
     }
     .goal {
-        width: 25%;
-        margin: 2px;
-        padding: 2px;
+        width: 24%;
+        margin: 4px;
+        padding: 4px;
         &:before {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            line-height: 26px;
+            line-height: 22px;
         }
     }
 
     .capacity {
-        width: 25%;
-        margin: 2px;
-        padding: 2px;
+        width: 24%;
+        margin: 4px;
+        padding: 4px;
         &:before {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            line-height: 26px;
+            line-height: 22px;
         }
     }
 
     .status {
-        width: 25%;
-        margin: 2px;
-        padding: 2px;
+        width: 24%;
+        margin: 4px;
+        padding: 4px;
         &:before {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            line-height: 26px;
+            line-height: 22px;
         }
     }
 
@@ -160,23 +168,48 @@
 @media (max-height: 715px) {
     .main {
         margin-top: 46px;
+            &__status {
+                margin-bottom: 32px;
+            }
+            &__water-glass {
+                width: 255px;
+                height: 255px;
+            }
+            &__counter {
+                font-size: 92px;
+
+            }
+            &__add-glass {
+                margin-top: -16px;
+            }
+            &__delete-glass {
+                margin-top: 22px;
+            }
     }
 }
 
 @media (max-height: 690px) {
     .main {
-        margin-top: 52px;
+        margin-top: 40px;
+            &__status {
+                margin-bottom: 30px;
+            }
             &__water-glass {
-                width: 230px;
-                height: 230px;
-    
+                width: 245px;
+                height: 245px;
             }
             &__counter {
                 font-size: 86px;
+
             }
             &__add-glass {
-                margin-top: 10px;
+                margin-top: -12px;
+                font-size: 18px;
             }
+            &__delete-glass {
+                margin-top: 16px;
+                font-size: 14px;
+        }
     
         }
         .goal {
@@ -240,4 +273,31 @@
             appearance: none;
             height: 16px;
         }
+}
+
+@media (max-height: 660px) {
+    .main {
+        margin-top: 40px;
+        &__status {
+            margin-bottom: 30px;
+        }
+        &__water-glass {
+            width: 230px;
+            height: 230px;
+          }
+          &__counter {
+            font-size: 86px;
+            margin-top: -152px;
+          }
+          &__add-glass {
+            font-size: 16px;
+            width: 170px;
+            height: 37px;
+            margin-top: -8px;
+          }
+          &__delete-glass {
+            margin-top: 26px;
+            font-size: 14px;
+    }
+}
 }
