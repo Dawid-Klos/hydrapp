@@ -1,5 +1,6 @@
 import '../scss/main.scss';
-import swal from 'sweetalert';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
 import chart from 'chart.js';
 // uncomment the lines below to enable PWA
 import { registerSW } from './pwa.js';
@@ -57,15 +58,15 @@ const capacityValue = localStorage.getItem(select2);
 
 // GREETINGS NEW USERS //
 
-if (!firstTime) {
-    swal("WELCOME!", "Please, before you start to explore our app:\n Allow for notifications.\n It helps to keep your hydration on 100%! \n And don't forget to install our app! :)", "info");
-    localStorage.setItem("firstTime", "1");
-};
+// if (!firstTime) {
+//     swal("WELCOME!", "Please, before you start to explore our app:\n Allow for notifications.\n It helps to keep your hydration on 100%! \n And don't forget to install our app! :)", "info");
+//     localStorage.setItem("firstTime", "1");
+// };
 
 // WELCOME TO USERS EVERY DAY //
 
 if (firstTime && !keyValue) {
-    swal("WELCOME!", "Nice to see you back. :)", "info");
+    swal.fire("WELCOME!", "Nice to see you back. :)", "info");
 }
 
 // ADDING A GLASS //
@@ -74,10 +75,7 @@ addGlass.addEventListener('click', function (event) {
     result++;
     progress();
     if ((result * myCapacity) == 1000) {
-        swal("", "You've alredy drunk 1l of water.\n \n Good job! ", "success");
-    }
-    if ((result * myCapacity) == 4000) {
-        swal("", "You have to be very thursty! \n \n 4l behind you :)", "success");
+        Swal.fire("", "You've alredy drunk 1l of water.\n \n Good job! ", "success");
     }
     localStorage.setItem(key, result);
     counter.innerHTML = result;
@@ -91,7 +89,7 @@ deleteGlass.addEventListener('click', function (event) {
     result--;
     progress();
     if (result < 0) {
-        swal("Oops!", "You don't have anything to delete", "error");
+        swal.fire("Oops!", "You don't have anything to delete", "error");
         result = 0;
     }
     localStorage.setItem(key, result);
@@ -134,7 +132,7 @@ if(!goalValue || !capacityValue) {
 const drinkingStatus = () => {
     const percentage = ((result * myCapacity) / myGoal) * 100;
     percentageStatus.innerHTML = (Math.round(percentage) + " %");
-    goalStatus.innerHTML = ((myGoal / myCapacity) + " cups");
+    goalStatus.innerHTML = ((myGoal / myCapacity) + " glasses");
     capacityStatus.innerHTML = (myCapacity + " ml");
     progressStatus.value = ((result * myCapacity) / myGoal) * 100;
 }
@@ -148,6 +146,7 @@ saveChoices.addEventListener('click', function (event) {
     localStorage.setItem(select1, myGoal);
     localStorage.setItem(select2, myCapacity);
     drinkingStatus();
+    progress();
 });
 
 // HAMBURGER MENU //
@@ -242,7 +241,7 @@ const progress = () => {
       opacityValue = water.style.opacity;
     }
     if (progress == 100) {
-      swal("Daily goal", "Congratulations! \n \n You've achieved your goal today :)", "success");
+      Swal.fire("Daily goal", "Congratulations! \n \n You've achieved your goal today :)", "success");
     }
     localStorage.setItem("opacity", opacityValue);
   };
@@ -333,65 +332,70 @@ updateDrinkingChart();
 
 let deferredPrompt;
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent the mini-infobar from appearing on mobile
-  e.preventDefault();
-  // Stash the event so it can be triggered later.
-  deferredPrompt = e;
-  // Update UI notify the user they can install the PWA
-  showInstallPromotion();
-});
+window.addEventListener('beforeinstallprompt', e => {
 
-const buttonInstall = document.querySelector('.button-install--js')
-
-buttonInstall.addEventListener('click', (e) => {
-    // Hide the app provided install promotion
-    hideMyInstallPromotion();
-    // Show the install prompt
-    deferredPrompt.prompt();
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      } else {
-        console.log('User dismissed the install prompt');
-      }
-    });
-  });
-
+    Swal.fire({
+        title: 'hydrAPP',
+        text: "Would you like to install the app to your Homescreen?",
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#3767AD',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, install it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            e.preventDefault()
+            deferredPrompt = e
+            deferredPrompt.prompt()
+            deferredPrompt.userChoice
+              .then(choiceResult => {
+                if(choiceResult.outcome === 'accepted') {
+                  console.log('user accepted A2HS prompt')
+                  swal.close()
+                } else {
+                  console.log('user dismissed A2HS prompt')
+                  swal.close()
+                }
+                deferredPrompt = null
+              })
+        } 
+    })
+  })
+  
 // PUSH NOTIFICATIONS - test //
 // Zacząłem budować skrypt, który wysyła powiadomienie o konkretnych godzinacg
 // Sprawdzić czy działa
-Notification.requestPermission(function(status) {
-    console.log('Notification permission status:', status);
-});
 
-function displayNotification() {
-    if (Notification.permission == 'granted') {
-      navigator.serviceWorker.getRegistration().then(function(reg) {
-        var options = {
-          body: 'Here is a notification body!',
-          icon: 'images/example.png',
-          vibrate: [100, 50, 100],
-          data: {
-            dateOfArrival: Date.now(),
-            primaryKey: 1
-          }
-        };
-        reg.showNotification('Hello world!', options);
-      });
-    }
-  }
+// Notification.requestPermission(function(status) {
+//     console.log('Notification permission status:', status);
+// });
 
-function checkDate() {
-    let date = new Date();
-    let hour = date.getHours();
-    if (hour === 8 || hour === 10 || hour === 14 || hour === 16) {
-        displayNotification();
-    }
-}
-let dateLoop = setInterval(function() {
-    checkDate();
-},5000);
+// function displayNotification() {
+//     if (Notification.permission == 'granted') {
+//       navigator.serviceWorker.getRegistration().then(function(reg) {
+//         var options = {
+//           body: 'Here is a notification body!',
+//           icon: 'images/example.png',
+//           vibrate: [100, 50, 100],
+//           data: {
+//             dateOfArrival: Date.now(),
+//             primaryKey: 1
+//           }
+//         };
+//         reg.showNotification('Hello world!', options);
+//       });
+//     }
+//   }
+
+// function checkDate() {
+//     let date = new Date();
+//     let hour = date.getHours();
+//     if (hour === 8 || hour === 10 || hour === 14 || hour === 16) {
+//         displayNotification();
+//     }
+// }
+// let dateLoop = setInterval(function() {
+//     checkDate();
+// },5000);
 
   

@@ -7,7 +7,6 @@
 @import "settings.scss";
 @import "back.scss";
 
-
 @keyframes waterdrop {
   0% {
     transform: scale(1.1);
@@ -58,7 +57,9 @@ body {
       text-align: center;
     }
 }
-
+html {
+  height: -webkit-fill-available;
+}
 .hamburger {
   border: 0;
   position: fixed;
@@ -110,11 +111,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 48px;
   touch-action: manipulation;
     &__status {
-      width: 85%;
-      margin-bottom: 24px;
+      width: 95%;
+      margin-bottom: 64px;
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
@@ -126,7 +127,6 @@ body {
     }
     &__water-glass {
       z-index: 0;
-      margin-top: 12px;
     }
     &__counter {
       z-index: 1;
@@ -142,17 +142,10 @@ body {
       border-radius: 5px;
       background: #FFFFFF;
       outline-style: none;
-      margin-top: -38px;
-        &:active {
-          outline: none;
-          border: none;
-        }
-        &:focus {
-          outline: 0;
-        }
+      margin-top: -8px;
     }
     &__delete-glass {
-      margin-top: 26px;
+      margin-top: 36px;
       font-size: 16px;
       border: 0;
       padding: 0;
@@ -209,6 +202,13 @@ body {
   padding: 10px;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 4px;
+    &:before {
+      content: "Goal\A";
+      white-space: pre;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 28px;
+        }
 }
 .img__goal {
   width: 10%;
@@ -221,6 +221,14 @@ body {
   padding: 10px;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 4px;
+    &:before {
+      content: "Capacity\A";
+      letter-spacing: .8px;
+      white-space: pre;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 28px;
+        }
 }
 .img__bottle {
   width: 10%;
@@ -233,6 +241,13 @@ body {
   padding: 10px;
   background-color: rgba(255, 255, 255, .25);
   border-radius: 4px;
+    &:before {
+      content: "Status\A";
+      white-space: pre;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 28px;
+        }
 }
 .img__percentage {
   width: 10%;
@@ -241,14 +256,13 @@ body {
 }
 .progress {
   align-self: center;
-  width: 80%;
+  width: 95%;
   margin: 8px auto;
 }
 progress[value] {
   -webkit-appearance: none;
    appearance: none;
-  width: 350px;
-  height: 20px;
+  height: 22px;
     &::-webkit-progress-bar {
       background-color: #eee;
       border-radius: 2px;
@@ -265,7 +279,7 @@ progress[value] {
          -webkit-linear-gradient(left, #09c, #f44);
     
         border-radius: 2px; 
-        background-size: 35px 20px, 100% 100%, 100% 100%;
+        background-size: 35px 22px, 100% 100%, 100% 100%;
       &::-webkit-progress-value::before {
           content: '80%';
           position: absolute;
@@ -273,3 +287,85 @@ progress[value] {
           top: -125%;
       }
 }}
+
+@media (min-width: 390px) {
+
+  .img__goal {
+    width: 14%;
+    padding: 6px;
+    margin: -4px 18px;
+  }
+  .img__bottle {
+    width: 14%;
+    padding: 6px;
+    margin: -4px 18px;
+  }
+  .img__percentage {
+    width: 14%;
+    padding: 6px;
+    margin: -4px 18px;
+  }
+.progress {
+  align-self: center;
+  width: 90%;
+  margin: 8px auto;
+}
+}
+
+@media (max-height: 810px) {
+  .main {
+    margin-top: 70px;
+  }
+}
+
+@media (max-height: 785px) {
+  .main {
+    margin-top: 80px;
+      &__status {
+        margin-bottom: 16px;
+
+      }
+  }
+  .goal {
+    width: 18%;
+    margin: 12px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, .25);
+    border-radius: 4px;
+  }
+  .img__goal {
+    width: 10%;
+    padding: 6px;
+    margin: -4px 32px;
+  }
+  .capacity {
+    width: 18%;
+    margin: 12px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, .25);
+    border-radius: 4px;
+  }
+  .img__bottle {
+    width: 10%;
+    padding: 6px;
+    margin: -4px 32px;
+  }
+  .status {
+    width: 18%;
+    margin: 12px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, .25);
+    border-radius: 4px;
+  }
+  .img__percentage {
+    width: 10%;
+    padding: 6px;
+    margin: -4px 32px;
+  }
+  .progress {
+    align-self: center;
+    width: 95%;
+    margin: 8px auto;
+  }
+}
+
