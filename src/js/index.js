@@ -89,7 +89,7 @@ deleteGlass.addEventListener('click', function (event) {
     result--;
     progress();
     if (result < 0) {
-        swal.fire("Oops!", "You don't have anything to delete", "error");
+        Swal.fire("Oops!", "You don't have anything to delete", "error");
         result = 0;
     }
     localStorage.setItem(key, result);
@@ -118,6 +118,8 @@ const storage = Object.entries(localStorage).sort((a, b) => b[0].localeCompare(a
 
 // MY GOAL AND MY CAPACITY AND MY STATUS BAR //
 
+
+// default //
 let myGoal = 4000;
 let myCapacity = 250;
 
@@ -254,18 +256,17 @@ let ctx = document.getElementById('myChart').getContext('2d');
 let config = {
     type: 'bar',
     data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        Labels: [],
         datasets: [{
-            label: 'Last 7 days of drinking',
-            data: [12, 19, 3, 5, 2, 3, 4],
+            label: 'How much you have drunk this day',
+            data: [],
             backgroundColor: [
-                'rgba(55, 102, 173, 0.8)',
-                'rgba(55, 102, 173, 0.8)',
-                'rgba(55, 102, 173, 0.8)',
-                'rgba(55, 102, 173, 0.8)',
-                'rgba(55, 102, 173, 0.8)',
-                'rgba(55, 102, 173, 0.8)',
-                'rgba(55, 102, 173, 0.8)'
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
             ],
             padding: 6,
             pointStyle: 'rectRounded',
@@ -279,6 +280,18 @@ let config = {
             duration: 1,
             easing: 'linear'
         },
+        layout: {
+            padding: {
+                left: 10,
+                right: 20,
+                top: 20,
+                bottom: 10
+            }
+        },
+        legend: {
+            display: true,
+            position: 'bottom',
+    },
         scales: {
             yAxes: [{
                 ticks: {
@@ -294,8 +307,8 @@ let myDrinkingChart = new Chart(ctx, config);
 
 // UPDATING CHART BY LOCALSTORAGE VALUES //
 
-let chartDate = [];
-let chartGlassesValue = [];
+let chartDate = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+let chartGlassesValue = [5,2,5,2,8,5,7];
 
 function drinkingChartValues() {
 
@@ -335,8 +348,8 @@ let deferredPrompt;
 window.addEventListener('beforeinstallprompt', e => {
 
     Swal.fire({
-        title: 'hydrAPP',
-        text: "Would you like to install the app to your Homescreen?",
+        title: 'Welcome!',
+        text: "Just before you start, would you like to install the hydrapp?",
         icon: 'question',
         showCancelButton: true,
         confirmButtonColor: '#3767AD',
@@ -359,11 +372,11 @@ window.addEventListener('beforeinstallprompt', e => {
                 deferredPrompt = null
               })
         } 
-    })
+    }),
+    true
   })
   
 // VH PROBLEM IN THE BROWSER //
-
 
 // We listen to the resize event
 window.addEventListener('resize', () => {
@@ -371,9 +384,6 @@ window.addEventListener('resize', () => {
     let vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   });
-
-
-
 
 // PUSH NOTIFICATIONS - test //
 // Zacząłem budować skrypt, który wysyła powiadomienie o konkretnych godzinacg
