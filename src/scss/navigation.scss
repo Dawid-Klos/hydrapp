@@ -1,0 +1,80 @@
+.nav {
+    width: 60%;
+    height: 100vh;
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: $hydrapp;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    box-shadow: 2px 0px 10px 0px #ffffff;
+}
+.nav-link {
+    margin-top: 16px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &__text {
+        font-size: 22px;
+    }
+    &__home {
+        margin-top: 8px;
+        margin-left: 4px;
+    }
+    &__stats {
+        margin-top: 8px;
+        margin-left: 4px;
+    }
+    &__settings {
+        margin-top: 8px;
+        margin-left: 4px;
+    }
+}
+
+.nav--open {
+    display: flex;
+    z-index: 999;
+    animation-duration: .6s;
+}
+
+.nav-shade {
+    width: 100vw;
+    height: 200vh;
+    height: calc(var(--vh, 1vh) * 200);
+    z-index: 998;
+    position: absolute;
+    background-color: rgba(0, 0, 0, .75);
+}
+
+.nav-topbox {
+    background-color: rgba(255,255,255, 0.2);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 4px 0px;
+    margin: 4px auto;
+    &__logo {
+        animation: waterdrop 3s ease-in infinite;
+    }
+}
+.social-media {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #ffffff;
+    &__github {
+        margin-right: 12px;
+        padding: 4px;
+    }
+    &__instagram {
+        margin-left: 12px;
+        padding: 4px;
+    }
+}

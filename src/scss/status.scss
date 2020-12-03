@@ -3,7 +3,9 @@
     background-color: rgba(0, 0, 0, .2);
     padding: 4px;
     border-radius: 5px;
+    margin: 0 auto;
     margin-bottom: 44px;
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -12,7 +14,7 @@
 }
 
 .goal {
-    width: 22%;
+    width: 28%;
     margin: 4px;
     padding: 4px;
     background-color: rgba(255, 255, 255, .25);
@@ -28,7 +30,7 @@
 }
 
 .capacity {
-    width: 22%;
+    width: 28%;
     margin: 4px;
     padding: 4px;
     background-color: rgba(255, 255, 255, .25);
@@ -45,7 +47,7 @@
 }
 
 .status {
-    width: 22%;
+    width: 28%;
     margin: 4px;
     padding: 4px;
     background-color: rgba(255, 255, 255, .25);
@@ -63,25 +65,28 @@
 .img__goal {
     width: 13%;
     padding: 6px;
-    margin: 1px 26px;
+    margin: -4px 12px;
+    margin-bottom: -18px;
 }
 
 .img__bottle {
     width: 13%;
     padding: 6px;
-    margin: 1px 26px;
+    margin: 1px 12px;
+    margin-bottom: -18px;
 }
 
 .img__percentage {
     width: 13%;
     padding: 6px;
-    margin: 1px 26px;
+    margin: 1px 12px;
+    margin-bottom: -18px;
 }
 
 .progress {
     align-self: center;
     width: 95%;
-    margin: 8px auto;
+    margin: 12px auto;
 }
 
 progress[value] {

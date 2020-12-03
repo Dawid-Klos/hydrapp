@@ -5,9 +5,9 @@
     height: 90vh;
     height: calc(var(--vh, 1vh) * 90);
     width: 100%;
-    z-index: 997;
+    z-index: 994;
     text-align: center;
-    top: 75px;
+    top: 5px;
     touch-action: manipulation;
         &__title {
             font-size: 32px;
