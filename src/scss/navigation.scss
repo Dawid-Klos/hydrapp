@@ -9,36 +9,41 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-direction: column;
-    box-shadow: 2px 0px 10px 0px #ffffff;
-}
-.nav-link {
-    margin-top: 16px;
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    &__text {
-        font-size: 22px;
-    }
-    &__home {
-        margin-top: 8px;
-        margin-left: 4px;
-    }
-    &__stats {
-        margin-top: 8px;
-        margin-left: 4px;
-    }
-    &__settings {
-        margin-top: 8px;
-        margin-left: 4px;
-    }
 }
 
 .nav--open {
     display: flex;
     z-index: 999;
-    animation-duration: .6s;
+    animation-duration: .4s;
+}
+
+.nav-link {
+    margin-top: 5px;
+    width: 100%;
+    padding: 8px;
+    border-bottom: 1.5px ridge #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    &__text {
+        font-size: 22px;
+        text-shadow: rgba(0, 0, 0, 0.3) 1px 5px;
+    }
+    &__home {
+        margin: 2px 4px;
+        max-width: 14%;
+        margin-left: 52px;
+    }
+    &__stats {
+        margin: 2px 4px;
+        max-width: 14%;
+        margin-left: 52px;
+    }
+    &__settings {
+        margin: 2px 4px;
+        max-width: 14%;
+        margin-left: 52px;
+    }
 }
 
 .nav-shade {
@@ -51,12 +56,13 @@
 }
 
 .nav-topbox {
-    background-color: rgba(255,255,255, 0.2);
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 4px 0px;
+    padding: 4px;
     margin: 4px auto;
+    margin-bottom: 8px;
+    border-bottom: 0.5px ridge #ffffff;
     &__logo {
         animation: waterdrop 3s ease-in infinite;
     }
@@ -68,7 +74,7 @@
     padding: 4px;
     display: flex;
     justify-content: center;
-    border-top: 1px solid #ffffff;
+    border-top: 1.5px ridge #ffffff;
     &__github {
         margin-right: 12px;
         padding: 4px;

@@ -125,6 +125,10 @@ if (!goalValue || !capacityValue) {
   myCapacity = capacityValue;
 }
 
+
+progressStatus.setAttribute("value", ((result * myCapacity) / myGoal) * 100);
+
+
 const drinkingStatus = () => {
   const percentage = ((result * myCapacity) / myGoal) * 100;
   percentageStatus.innerHTML = Math.round(percentage) + " %";
@@ -252,6 +256,8 @@ const progress = () => {
   }
   localStorage.setItem("opacity", opacityValue);
 };
+
+
 
 // MY DRINKING CHART HISTORY //
 

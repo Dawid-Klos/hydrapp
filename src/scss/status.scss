@@ -3,9 +3,7 @@
     background-color: rgba(0, 0, 0, .2);
     padding: 4px;
     border-radius: 5px;
-    margin: 0 auto;
-    margin-bottom: 44px;
-    margin-top: 20px;
+    margin: 5vh auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -15,8 +13,8 @@
 
 .goal {
     width: 28%;
-    margin: 4px;
-    padding: 4px;
+    margin: 0.4vh;
+    padding: 0.6vh;
     background-color: rgba(255, 255, 255, .25);
     border-radius: 4px;
 
@@ -31,8 +29,8 @@
 
 .capacity {
     width: 28%;
-    margin: 4px;
-    padding: 4px;
+    margin: 0.4vh;
+    padding: 0.6vh;
     background-color: rgba(255, 255, 255, .25);
     border-radius: 4px;
 
@@ -48,8 +46,8 @@
 
 .status {
     width: 28%;
-    margin: 4px;
-    padding: 4px;
+    margin: 0.4vh;
+    padding: 0.6vh;
     background-color: rgba(255, 255, 255, .25);
     border-radius: 4px;
 
@@ -64,42 +62,43 @@
 
 .img__goal {
     width: 13%;
+    max-width: 10vh;
     padding: 6px;
-    margin: -4px 12px;
-    margin-bottom: -18px;
+    margin: 1px 14px;
+    margin-bottom: -16px;
 }
 
 .img__bottle {
     width: 13%;
+    max-width: 10vh;
     padding: 6px;
-    margin: 1px 12px;
-    margin-bottom: -18px;
+    margin: 1px 14px;
+    margin-bottom: -16px;
 }
 
 .img__percentage {
     width: 13%;
+    max-width: 10vh;
     padding: 6px;
-    margin: 1px 12px;
-    margin-bottom: -18px;
+    margin: 1px 14px;
+    margin-bottom: -16px;
 }
 
 .progress {
     align-self: center;
-    width: 95%;
+    width: 100%;
     margin: 12px auto;
 }
 
 progress[value] {
     -webkit-appearance: none;
     appearance: none;
-    height: 22px;
-
+    height: 24px;
     &::-webkit-progress-bar {
         background-color: #eee;
-        border-radius: 2px;
+        border-radius: 12px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
     }
-
     &::-webkit-progress-value {
         background-image:
             -webkit-linear-gradient(-45deg,
@@ -109,15 +108,7 @@ progress[value] {
                 rgba(255, 255, 255, .25),
                 rgba(0, 0, 0, .25)),
             -webkit-linear-gradient(left, #09c, #f44);
-
-        border-radius: 2px;
+        border-radius: 12px;
         background-size: 35px 22px, 100% 100%, 100% 100%;
-
-        &::-webkit-progress-value::before {
-            content: '80%';
-            position: absolute;
-            right: 0;
-            top: -125%;
-        }
     }
 }
