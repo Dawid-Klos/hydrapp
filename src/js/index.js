@@ -280,6 +280,15 @@ let config = {
           "rgba(153, 102, 255, 0.2)",
           "rgba(255, 159, 64, 0.2)",
         ],
+        borderColor: [
+          "#6194e0",
+          "#6194e0",
+          "#6194e0",
+          "#6194e0",
+          "#6194e0",
+          "#6194e0",
+          "#6194e0"
+        ],
         padding: 6,
         pointStyle: "rectRounded",
         radius: 4,
@@ -295,8 +304,8 @@ let config = {
     },
     layout: {
       padding: {
-        left: 10,
-        right: 30,
+        left: 5,
+        right: 40,
         top: 20,
         bottom: 10,
       },
@@ -322,26 +331,46 @@ let myDrinkingChart = new Chart(ctx, config);
 
 // UPDATING CHART BY LOCALSTORAGE VALUES //
 
-let chartDate = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-let chartGlassesValue = [5, 2, 5, 2, 8, 5, 7];
+let chartDate = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+let chartGlassesValue = [0,2,4,6,8,10,12];
 
 function drinkingChartValues() {
+
+if(!key) {
+  chartDate = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  chartGlassesValue = [0,2,4,6,8,10,12];
+
+} else {
+  let i = 0;
   for (const [key, value] of storage) {
     if (
       value !== "INFO" &&
       key !== "myCapacity" &&
       key !== "myGoal" &&
       key !== "opacity" &&
-      key !== "firstTime" &&
-      chartDate.length < 7
+      key !== "firstTime"
     ) {
+      chartDate.splice(i,i+1);
+      chartGlassesValue.splice(i,i+1);
       let date = key.slice(5, 10);
       let glasses = value;
-      chartDate.push(date);
-      chartGlassesValue.push(glasses);
+      chartDate.unshift(date);
+      chartGlassesValue.unshift(glasses);
+      console.log(chartDate);
+      console.log(chartGlassesValue);
+      i++;
     }
   }
 }
+}
+let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let d = new Date();
+let dayName = days[d.getDay()].toString().split(' ')[0];
+dayName = dayName.slice(0,3);
+
+console.log(dayName);
+
+
 
 // CHART UPDATING //
 

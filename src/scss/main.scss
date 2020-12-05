@@ -3,7 +3,7 @@
 @import "_variables";
 @import "modules/hello.scss";
 @import "hamburgers/hamburgers.scss";
-@import "stats.scss";
+@import "statistics.scss";
 @import "settings.scss";
 @import "back.scss";
 @import "status.scss";
@@ -110,7 +110,7 @@ html {
   justify-content: center;
   margin-top: 1vh;
   touch-action: manipulation;
-  overflow: auto;
+  overflow: visible;
   &__water-glass {
     z-index: 0;
     position: relative;

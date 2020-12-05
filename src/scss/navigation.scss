@@ -14,7 +14,7 @@
 .nav--open {
     display: flex;
     z-index: 999;
-    animation-duration: .4s;
+    animation-duration: .3s;
 }
 
 .nav-link {
@@ -33,6 +33,7 @@
         margin: 2px 4px;
         max-width: 14%;
         margin-left: 52px;
+        text-decoration: underline;
     }
     &__stats {
         margin: 2px 4px;
