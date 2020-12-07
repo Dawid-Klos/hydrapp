@@ -2,13 +2,11 @@ import "../scss/main.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import chart from "chart.js";
+import "../js/notifications";
+
 // uncomment the lines below to enable PWA
 import { registerSW } from "./pwa.js";
 registerSW();
-
-/* place your code below */
-
-console.log("HELLO 🚀");
 
 //  MY VARIABLES  //
 
@@ -65,7 +63,7 @@ if (firstTime && !keyValue) {
 addGlass.addEventListener("click", function (event) {
   result++;
   progress();
-  if (result * myCapacity == 1000) {
+  if (result * myCapacity == 1000 && progress !== 100) {
     Swal.fire(
       "",
       "You've alredy drunk 1l of water.\n \n Good job! ",
@@ -124,10 +122,8 @@ if (!goalValue || !capacityValue) {
   myGoal = goalValue;
   myCapacity = capacityValue;
 }
-
-
+// value for status bar on main page - not used yet!
 progressStatus.setAttribute("value", ((result * myCapacity) / myGoal) * 100);
-
 
 const drinkingStatus = () => {
   const percentage = ((result * myCapacity) / myGoal) * 100;
@@ -257,8 +253,6 @@ const progress = () => {
   localStorage.setItem("opacity", opacityValue);
 };
 
-
-
 // MY DRINKING CHART HISTORY //
 
 // CHART.JS //
@@ -287,7 +281,7 @@ let config = {
           "#6194e0",
           "#6194e0",
           "#6194e0",
-          "#6194e0"
+          "#6194e0",
         ],
         padding: 6,
         pointStyle: "rectRounded",
@@ -331,46 +325,50 @@ let myDrinkingChart = new Chart(ctx, config);
 
 // UPDATING CHART BY LOCALSTORAGE VALUES //
 
-let chartDate = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-let chartGlassesValue = [0,2,4,6,8,10,12];
+let chartDate = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+let chartGlassesValue = [0, 2, 4, 6, 8, 10, 12];
 
 function drinkingChartValues() {
-
-if(!key) {
-  chartDate = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-  chartGlassesValue = [0,2,4,6,8,10,12];
-
-} else {
-  let i = 0;
-  for (const [key, value] of storage) {
-    if (
-      value !== "INFO" &&
-      key !== "myCapacity" &&
-      key !== "myGoal" &&
-      key !== "opacity" &&
-      key !== "firstTime"
-    ) {
-      chartDate.splice(i,i+1);
-      chartGlassesValue.splice(i,i+1);
-      let date = key.slice(5, 10);
-      let glasses = value;
-      chartDate.unshift(date);
-      chartGlassesValue.unshift(glasses);
-      console.log(chartDate);
-      console.log(chartGlassesValue);
-      i++;
+  if (!key) {
+    chartDate = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    chartGlassesValue = [0, 2, 4, 6, 8, 10, 12];
+  } else {
+    let i = 0;
+    for (const [key, value] of storage) {
+      if (
+        value !== "INFO" &&
+        key !== "myCapacity" &&
+        key !== "myGoal" &&
+        key !== "opacity" &&
+        key !== "firstTime"
+      ) {
+        chartDate.splice(i, i + 1);
+        chartGlassesValue.splice(i, i + 1);
+        let date = key.slice(5, 10);
+        let glasses = value;
+        chartDate.unshift(date);
+        chartGlassesValue.unshift(glasses);
+        console.log(chartDate);
+        console.log(chartGlassesValue);
+        i++;
+      }
     }
   }
 }
-}
-let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 let d = new Date();
-let dayName = days[d.getDay()].toString().split(' ')[0];
-dayName = dayName.slice(0,3);
+let dayName = days[d.getDay()].toString().split(" ")[0];
+dayName = dayName.slice(0, 3);
 
 console.log(dayName);
-
-
 
 // CHART UPDATING //
 
@@ -391,80 +389,11 @@ function updateConfig() {
 drinkingChartValues();
 updateDrinkingChart();
 
-// ASK TO INSTALL THE APP //
+// // VH PROBLEM IN THE BROWSER //
 
-let deferredPrompt;
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  Swal.fire({
-    title: "Welcome!",
-    text: "Just before you start, would you like to install the hydrapp?",
-    icon: "question",
-    showCancelButton: true,
-    confirmButtonColor: "#3767AD",
-    cancelButtonColor: "#d33",
-    confirmButtonText: "Yes, install it!",
-  }).then((result) => {
-    if (result.isConfirmed) {
-      e.preventDefault();
-      deferredPrompt = e;
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-        if (choiceResult.outcome === "accepted") {
-          console.log("user accepted A2HS prompt");
-          swal.close();
-        } else {
-          console.log("user dismissed A2HS prompt");
-          swal.close();
-        }
-        deferredPrompt = null;
-      });
-    }
-  }),
-    true;
-});
-
-// VH PROBLEM IN THE BROWSER //
-
-// We listen to the resize event
-window.addEventListener("resize", () => {
-  // We execute the same script as before
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty("--vh", `${vh}px`);
-});
-
-// PUSH NOTIFICATIONS - test //
-// Zacząłem budować skrypt, który wysyła powiadomienie o konkretnych godzinacg
-// Sprawdzić czy działa
-
-// Notification.requestPermission(function(status) {
-//     console.log('Notification permission status:', status);
+// // We listen to the resize event
+// window.addEventListener("resize", () => {
+//   // We execute the same script as before
+//   let vh = window.innerHeight * 0.01;
+//   document.documentElement.style.setProperty("--vh", `${vh}px`);
 // });
-
-// function displayNotification() {
-//     if (Notification.permission == 'granted') {
-//       navigator.serviceWorker.getRegistration().then(function(reg) {
-//         var options = {
-//           body: 'Here is a notification body!',
-//           icon: 'images/example.png',
-//           vibrate: [100, 50, 100],
-//           data: {
-//             dateOfArrival: Date.now(),
-//             primaryKey: 1
-//           }
-//         };
-//         reg.showNotification('Hello world!', options);
-//       });
-//     }
-//   }
-
-// function checkDate() {
-//     let date = new Date();
-//     let hour = date.getHours();
-//     if (hour === 8 || hour === 10 || hour === 14 || hour === 16) {
-//         displayNotification();
-//     }
-// }
-// let dateLoop = setInterval(function() {
-//     checkDate();
-// },5000);

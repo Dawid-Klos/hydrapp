@@ -1,13 +1,11 @@
 @import "~normalize.css";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 @import "_variables";
-@import "modules/hello.scss";
 @import "hamburgers/hamburgers.scss";
-@import "statistics.scss";
-@import "settings.scss";
-@import "back.scss";
-@import "status.scss";
-@import "navigation.scss";
+@import "modules/statistics.scss";
+@import "modules/settings.scss";
+@import "modules/status.scss";
+@import "modules/navigation.scss";
 
 @keyframes waterdrop {
   0% {
@@ -140,12 +138,14 @@ html {
 
   &__buttons--add {
     margin-left: 28px;
+    width: 10vh;
     min-height: 10vh;
     max-height: 18vh;
   }
 
   &__buttons--delete {
     margin-right: 28px;
+    width: 10vh;
     min-height: 10vh;
     max-height: 18vh;
   }

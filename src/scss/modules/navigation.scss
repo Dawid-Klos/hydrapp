@@ -30,17 +30,23 @@
         text-shadow: rgba(0, 0, 0, 0.3) 1px 5px;
     }
     &__home {
+        max-width: 40px;
+        max-height: 40px;
         margin: 2px 4px;
         max-width: 14%;
         margin-left: 52px;
         text-decoration: underline;
     }
     &__stats {
+        max-width: 40px;
+        max-height: 40px;
         margin: 2px 4px;
         max-width: 14%;
         margin-left: 52px;
     }
     &__settings {
+        max-width: 40px;
+        max-height: 40px;
         margin: 2px 4px;
         max-width: 14%;
         margin-left: 52px;
@@ -65,6 +71,8 @@
     margin-bottom: 8px;
     border-bottom: 0.5px ridge #ffffff;
     &__logo {
+        max-width: 60px;
+        max-height: 60px;
         animation: waterdrop 3s ease-in infinite;
     }
 }
@@ -77,10 +85,14 @@
     justify-content: center;
     border-top: 1.5px ridge #ffffff;
     &__github {
+        max-width: 60px;
+        max-height: 60px;
         margin-right: 12px;
         padding: 4px;
     }
     &__instagram {
+        max-width: 60px;
+        max-height: 60px;
         margin-left: 12px;
         padding: 4px;
     }
