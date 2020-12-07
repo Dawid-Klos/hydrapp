@@ -79,7 +79,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/pages/index.html",
       inject: true,
-      chunks: ["index, notifications"],
+      chunks: ["index"],
       filename: "index.html",
     }),
   ],

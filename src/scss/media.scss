@@ -154,7 +154,7 @@
         }
         &__counter {
             margin-top: -410px;
-            font-size: 180px;
+            font-size: 160px;
           }
 }
     .main__status {
@@ -190,5 +190,85 @@
     
     .img__percentage {
         margin: -20px 42px;
+    }
+}
+@media screen and (min-width:1440px) {
+    .main {
+        &__buttons {
+            margin-top: 22px;
+            width: 30%;
+          }
+          &__buttons--add {
+            margin-left: 36px;
+          }
+        
+          &__buttons--delete {
+            margin-right: 36px;
+          }
+        &__water-glass {
+            margin-bottom: -5px;
+        }
+        &__counter {
+            margin-top: -330px;
+            font-size: 170px;
+          }
+}
+    .main__status {
+        width: 70%;
+        padding: 32px;
+    }
+    
+    .goal {
+        width: 26%;
+        margin: 1.0vh;
+        padding: 0.6vh;
+        font-size: 28px;
+        line-height: 38px;
+        &:before {
+            font-size: 34px;
+            font-weight: bold;
+        }
+    }
+    
+    .capacity {
+        width: 26%;
+        margin: 1.0vh;
+        padding: 0.6vh;
+        font-size: 28px;
+        line-height: 38px;
+        &:before {
+            font-size: 34px;
+            font-weight: bold;
+        }
+    }
+    
+    .status {
+        width: 26%;
+        margin: 1.0vh;
+        padding: 0.6vh;
+        font-size: 28px;
+        line-height: 38px;
+        &:before {
+            font-size: 34px;
+            font-weight: bold;
+        }
+    }
+    
+    .img__goal {
+        margin: -36px 82px;
+        width: 18%;
+        height: 40%;
+    }
+    
+    .img__bottle {
+        margin: -36px 82px;
+        width: 18%;
+        height: 40%;
+    }
+    
+    .img__percentage {
+        margin: -36px 82px;
+        width: 18%;
+        height: 40%;
     }
 }
