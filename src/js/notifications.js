@@ -60,24 +60,8 @@ function displayNotification() {
 function checkDate() {
     let date = new Date();
     let hour = date.getHours();
-    let minutes = date.getMinutes;
-    if (hour === 8 || hour === 9 || hour === 10 || hour === 12 || hour === 14 || hour === 16) {
+    if (hour === 8 || hour === 10 || hour === 12 || hour === 13 || hour === 14 || hour === 15 || hour === 16 || hour === 17 || hour === 18 || hour === 19) {
         displayNotification();
-    }
-    if (hour == 12 && minutes == 1) {
-      displayNotification();
-    }
-    if (hour == 12 && minutes == 3) {
-      displayNotification();
-    }
-    if (hour == 12 && minutes == 5) {
-      displayNotification();
-    }
-    if (hour == 12 && minutes == 8) {
-      displayNotification();
-    }
-    if (hour == 12 && minutes == 10) {
-      displayNotification();
     }
 }
 let dateLoop = setInterval(function() {

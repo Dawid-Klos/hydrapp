@@ -204,6 +204,11 @@
           />
           <span class="nav-link__text">Settings</span>
         </div>
+        <div class="current-level">
+          <p class="current-level__welcome">Hi <span class="current-level__welcome--name name--js">Your Name</span>, </p>
+          <p class="current-level__title">You've already drunk: </p>
+          <p class="current-level__value current-level--js"></p>
+        </div>
         <div class="social-media">
           <a
             class="social-media__github"
@@ -322,6 +327,10 @@
           <option value="400">400 ml</option>
           <option value="500">500 ml</option>
         </select>
+
+        <label for="name" class="settings__name">Please, type your name below:</label>
+        <input class="settings__name name-value--js" type="text" value="" inputmode="verbatim" />
+
         <button class="settings__select-save select--js" name="save">
           Save
         </button>

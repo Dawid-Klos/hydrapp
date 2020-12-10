@@ -18,6 +18,7 @@
             width: 70%;
             padding: 4px;
             margin: 4px;
+            font-size: 24px;
         }
         &__select-capacity {
             width: 70%;
@@ -41,7 +42,12 @@
               &:focus {
                 outline: 0;
               }
-}
+        }
+        &__name {
+            width: 70%;
+            padding: 4px;
+            margin: 4px;
+        }
 }
 .settings--open {
     display: flex;

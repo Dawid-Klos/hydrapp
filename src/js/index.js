@@ -39,6 +39,9 @@ const opacity = localStorage.getItem("opacity");
 const goalChoice = document.querySelector(".goal--js");
 const capacityChoice = document.querySelector(".capacity--js");
 const saveChoices = document.querySelector(".select--js");
+const userName = document.querySelector('.name--js');
+const nameValue = document.querySelector('.name-value--js');
+const getSavedName = localStorage.getItem("name");
 
 // Goal, capacity, percentage - current status //
 const goalStatus = document.querySelector(".goal");
@@ -49,6 +52,8 @@ let select1 = "myGoal";
 let select2 = "myCapacity";
 const goalValue = localStorage.getItem(select1);
 const capacityValue = localStorage.getItem(select2);
+const currentLevel = document.querySelector('.current-level--js');
+
 
 //             //
 
@@ -57,6 +62,17 @@ const capacityValue = localStorage.getItem(select2);
 if (firstTime && !keyValue) {
   swal.fire("WELCOME!", "Nice to see you back. :)", "info");
 }
+
+
+// GETTING USER NAME //
+
+if (getSavedName) {
+  userName.innerHTML = getSavedName;
+} else {
+  localStorage.setItem("name", "Your name");
+}
+
+
 
 // ADDING A GLASS //
 
@@ -127,10 +143,12 @@ progressStatus.setAttribute("value", ((result * myCapacity) / myGoal) * 100);
 
 const drinkingStatus = () => {
   const percentage = ((result * myCapacity) / myGoal) * 100;
+  // percentageStatus.innerHTML = Math.round(percentage) + " %";
   percentageStatus.innerHTML = Math.round(percentage) + " %";
   goalStatus.innerHTML = myGoal / myCapacity + " glasses";
   capacityStatus.innerHTML = myCapacity + " ml";
   progressStatus.value = ((result * myCapacity) / myGoal) * 100;
+  currentLevel.innerHTML = (result * myCapacity) + " ml / " + myGoal + " ml";
 };
 drinkingStatus();
 
@@ -140,6 +158,8 @@ saveChoices.addEventListener("click", function (event) {
   myCapacity = capacityChoice.value;
   localStorage.setItem(select1, myGoal);
   localStorage.setItem(select2, myCapacity);
+  localStorage.setItem("name", nameValue.value);
+  userName.innerHTML = nameValue.value;
   drinkingStatus();
   progress();
 });
