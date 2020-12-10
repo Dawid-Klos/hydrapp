@@ -3,6 +3,8 @@ import "sweetalert2/src/sweetalert2.scss";
 
 // ASK TO INSTALL THE APP //
 
+console.log("Hello");
+
 let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt", (e) => {
@@ -58,10 +60,26 @@ function displayNotification() {
 function checkDate() {
     let date = new Date();
     let hour = date.getHours();
-    if (hour === 8 || hour === 10 || hour === 14 || hour === 16) {
+    let minutes = date.getMinutes;
+    if (hour === 8 || hour === 9 || hour === 10 || hour === 12 || hour === 14 || hour === 16) {
         displayNotification();
+    }
+    if (hour == 12 && minutes == 1) {
+      displayNotification();
+    }
+    if (hour == 12 && minutes == 3) {
+      displayNotification();
+    }
+    if (hour == 12 && minutes == 5) {
+      displayNotification();
+    }
+    if (hour == 12 && minutes == 8) {
+      displayNotification();
+    }
+    if (hour == 12 && minutes == 10) {
+      displayNotification();
     }
 }
 let dateLoop = setInterval(function() {
     checkDate();
-},3540000);
+},1800000);

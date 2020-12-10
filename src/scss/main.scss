@@ -35,11 +35,9 @@ body {
   min-height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
   font-family: 'Roboto', sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   touch-action: manipulation;
+  margin-top: 18%;
+  overflow: hidden;
 }
 
 html {
@@ -96,8 +94,6 @@ html {
 }
 
 .main {
-  background: $hydrapp;
-  color: #ffffff;
   display: flex;
   width: 100%;
   position: relative;
@@ -105,24 +101,24 @@ html {
   height: calc(var(--vh, 1vh) * 90);
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  margin-top: 1vh;
+  justify-content: space-between;
   touch-action: manipulation;
-  overflow: visible;
+
   &__water-glass {
     z-index: 0;
-    position: relative;
-    margin-top: -2vh;
-    margin-bottom: 10px;
-    width: 85vw;
-    height: 95vh;
+    width: 70%;
+    height: 80%;
+    margin-top: 5%;
   }
 
   &__counter {
-    z-index: 1;
-    font-size: 100px;
-    color: #000000;
-    margin-top: -26vh;
+        z-index: 1;
+        position: absolute;
+        font-size: 100px;
+        color: #000000;
+        margin-top: 48vh;
+        max-width: 80%;
+        max-height: 80%
   }
 
   &__buttons {
@@ -133,7 +129,7 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -4vh;
+    margin: 5% auto;
   }
 
   &__buttons--add {

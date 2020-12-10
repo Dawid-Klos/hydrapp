@@ -7,7 +7,7 @@
     width: 100%;
     z-index: 994;
     text-align: center;
-    top: 5px;
+    top: -15px;
     align-items: center;
     touch-action: manipulation;
         &__title {
@@ -48,7 +48,7 @@
     flex-direction: column;
 }
 .info {
-    margin-top: 52px;
+    margin-top: 22px;
     width: 90%;
         &__img {
         margin-bottom: 10px;

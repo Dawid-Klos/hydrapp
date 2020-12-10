@@ -3,18 +3,18 @@
     background-color: rgba(0, 0, 0, .2);
     padding: 4px;
     border-radius: 5px;
-    margin: 5vh auto;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
+    margin-top: 2%;
 }
 
 .goal {
-    width: 28%;
-    margin: 0.4vh;
-    padding: 0.6vh;
+    width: 29%;
+    margin: 1%;
+    padding: 1%;
     background-color: rgba(255, 255, 255, .25);
     border-radius: 4px;
 
@@ -28,9 +28,9 @@
 }
 
 .capacity {
-    width: 28%;
-    margin: 0.4vh;
-    padding: 0.6vh;
+    width: 29%;
+    margin: 1%;
+    padding: 1%;
     background-color: rgba(255, 255, 255, .25);
     border-radius: 4px;
 
@@ -45,12 +45,11 @@
 }
 
 .status {
-    width: 28%;
-    margin: 0.4vh;
-    padding: 0.6vh;
+    width: 29%;
+    margin: 1%;
+    padding: 1%;
     background-color: rgba(255, 255, 255, .25);
     border-radius: 4px;
-
     &:before {
         content: "Status\A";
         white-space: pre;
@@ -65,7 +64,7 @@
     height: 28%;
     max-width: 10vh;
     padding: 6px;
-    margin: 1px 14px;
+    margin: 1% 8%;
     margin-bottom: -16px;
 }
 
@@ -74,7 +73,7 @@
     height: 28%;
     max-width: 10vh;
     padding: 6px;
-    margin: 1px 14px;
+    margin: 1% 8%;
     margin-bottom: -16px;
 }
 
@@ -83,7 +82,7 @@
     height: 28%;
     max-width: 10vh;
     padding: 6px;
-    margin: 1px 14px;
+    margin: 1% 8%;
     margin-bottom: -16px;
 }
 
@@ -91,18 +90,22 @@
     align-self: center;
     width: 100%;
     margin: 12px auto;
+        &:before {
+            content: attr(value)'%';
+        }
 }
-
 progress[value] {
     -webkit-appearance: none;
     appearance: none;
     height: 22px;
     &::-webkit-progress-bar {
+
         background-color: #eee;
         border-radius: 12px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
     }
     &::-webkit-progress-value {
+
         background-image:
             -webkit-linear-gradient(-45deg,
                 transparent 33%, rgba(0, 0, 0, .1) 33%,

@@ -2,7 +2,7 @@ import "../scss/main.scss";
 import Swal from "sweetalert2/dist/sweetalert2.js";
 import "sweetalert2/src/sweetalert2.scss";
 import chart from "chart.js";
-import "../js/notifications";
+// import "../js/notifications";
 
 // uncomment the lines below to enable PWA
 import { registerSW } from "./pwa.js";
